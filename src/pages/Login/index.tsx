@@ -1,5 +1,5 @@
 import React from 'react';
-import { Center, Text, Button, VStack } from "native-base";
+import { Center, Text, Button, VStack, Input, FormControl } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useForm, Controller } from 'react-hook-form';
@@ -18,6 +18,10 @@ export default function Login({ navigation }: NavigationProps) {
     defaultValues: valoresIniciaisLogin,
     resolver: yupResolver(schemaValidacaoFormularioLogin)
   });
+
+  function onSubmit(values: LoginTypes) {
+    navigation.navigate("HomePage")
+  }
 
   const lista_dados_campos: CampoInputProps[] = [
     {
@@ -38,28 +42,46 @@ export default function Login({ navigation }: NavigationProps) {
           const { control, name, isInvalid, placeholder, keyboardType, secureTextEntry,
             editable, menssagem_erro, defaultValue } = item;
           return (
-            <CampoInput
+            <FormControl
               key={index}
-              control={control}
-              name={name}
+              isRequired
               isInvalid={isInvalid}
-              placeholder={placeholder}
-              keyboardType={keyboardType}
-              secureTextEntry={secureTextEntry}
-              editable={editable}
-              menssagem_erro={menssagem_erro}
-              defaultValue={defaultValue}
-            />
+              paddingY={2}
+              paddingX={4}
+            >
+              <Controller
+                control={control}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <Input
+                    onBlur={onBlur}
+                    placeholder={placeholder}
+                    onChangeText={(val) => onChange(val)}
+                    value={value}
+                    variant="underlined"
+                    size="2xl"
+                    secureTextEntry={secureTextEntry}
+                    editable={editable}
+                    keyboardType={keyboardType}
+                  />
+                )}
+                name={name}
+                rules={{ required: 'Campo vazio' }}
+                defaultValue={defaultValue}
+              />
+              <FormControl.ErrorMessage>
+                <Text fontSize="xl" color="red">{menssagem_erro}</Text>
+              </FormControl.ErrorMessage>
+            </FormControl>
           );
         })}
       </VStack>
-      <VStack space={1} alignItems="center" width="full">
+      <VStack space={1} alignItems="center" width="full" marginTop={10}>
         <Button
           width="full"
           variant="solid"
           colorScheme="primary"
           size="lg"
-          onPress={() => navigation.navigate("HomePage")}
+          onPress={handleSubmit((onSubmit))}
         >
           <Text fontSize="xl" color="white">Entrar</Text>
         </Button>

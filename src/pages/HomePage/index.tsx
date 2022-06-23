@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Center, Container, Text, Button, VStack  } from "native-base";
+import { Center, Text, Button, VStack  } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -18,33 +18,11 @@ export default function HomePage({ navigation }: NavigationProps) {
         <Button
           width="full"
           variant="solid"
-          colorScheme="primary"
-          size="lg"
-          onPress={() => {
-            setData("Foda-se");
-          }}
-        >
-          <Text fontSize="xl" color="white">Entrar</Text>
-        </Button>
-        <Button
-          width="full"
-          variant="solid"
-          colorScheme="danger"
-          size="lg"
-          onPress={() => {
-            setData("");
-          }}
-        >
-          <Text fontSize="xl" color="white">Limpar</Text>
-        </Button>
-        <Button
-          width="full"
-          variant="solid"
           colorScheme="emerald"
           size="lg"
-          onPress={() => navigation.navigate("NovoUsuario")}
+          onPress={() => navigation.navigate("Login")}
         >
-          <Text fontSize="xl" color="white">Novo Cadastro</Text>
+          <Text fontSize="xl" color="white">Sair</Text>
         </Button>
       </VStack>
     </Center>

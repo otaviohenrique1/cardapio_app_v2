@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Center, Text, Button, VStack, FormControl, Input } from "native-base";
+import { Center, Text, Button, VStack, FormControl, Input, Select, CheckIcon } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useForm, Controller } from 'react-hook-form';
@@ -14,14 +14,13 @@ type NavigationProps = {
 }
 
 export default function NovoUsuario({ navigation }: NavigationProps) {
-  const [data, setData] = useState<string>("")
   const { control, handleSubmit, formState: { errors }, reset } = useForm<ClienteTypes>({
     defaultValues: valoresIniciaisCliente,
     resolver: yupResolver(validacaoSchemaCliente)
   });
 
   function onSubmit(values: ClienteTypes) {
-    setData(values.nome);
+    // 
   }
   
   const lista_dados_campos: CampoInputProps[] = [
@@ -40,13 +39,36 @@ export default function NovoUsuario({ navigation }: NavigationProps) {
     {
       control: control, name: "confirmacao_senha", menssagem_erro: errors.confirmacao_senha?.message, placeholder: "Confirme a senha",
       keyboardType: "default", secureTextEntry: true, defaultValue: "", editable: true, isInvalid: "confirmacao_senha" in errors,
+    },
+    {
+      control: control, name: "telefone", menssagem_erro: errors.telefone?.message, placeholder: "telefone",
+      keyboardType: "phone-pad", secureTextEntry: false, defaultValue: "", editable: true, isInvalid: "telefone" in errors,
+    },
+    {
+      control: control, name: "rua", menssagem_erro: errors.rua?.message, placeholder: "Rua",
+      keyboardType: "default", secureTextEntry: false, defaultValue: "", editable: true, isInvalid: "rua" in errors,
+    },
+    {
+      control: control, name: "numero", menssagem_erro: errors.numero?.message, placeholder: "Numero",
+      keyboardType: "default", secureTextEntry: false, defaultValue: "", editable: true, isInvalid: "numero" in errors,
+    },
+    {
+      control: control, name: "bairro", menssagem_erro: errors.bairro?.message, placeholder: "Bairro",
+      keyboardType: "default", secureTextEntry: false, defaultValue: "", editable: true, isInvalid: "bairro" in errors,
+    },
+    {
+      control: control, name: "cep", menssagem_erro: errors.cep?.message, placeholder: "CEP",
+      keyboardType: "default", secureTextEntry: false, defaultValue: "", editable: true, isInvalid: "cep" in errors,
+    },
+    {
+      control: control, name: "cidade", menssagem_erro: errors.cidade?.message, placeholder: "Cidade",
+      keyboardType: "default", secureTextEntry: false, defaultValue: "", editable: true, isInvalid: "cidade" in errors,
     }
   ];
 
   return (
     <Center height="full" paddingX="5" paddingY="6">
       <Text fontSize="5xl" marginBottom="8">Novo usuario</Text>
-      <Text fontSize="5xl" marginBottom="4">{data}</Text>
       <VStack space={1} alignItems="center" width="full">
         {lista_dados_campos.map((item, index) => {
           const { control, name, isInvalid, placeholder, keyboardType, secureTextEntry,
@@ -79,11 +101,53 @@ export default function NovoUsuario({ navigation }: NavigationProps) {
                 defaultValue={defaultValue}
               />
               <FormControl.ErrorMessage>
-                <Text fontSize={20} color="red">{menssagem_erro}</Text>
+                <Text fontSize="xl" color="red">{menssagem_erro}</Text>
               </FormControl.ErrorMessage>
             </FormControl>
           );
         })}
+        <FormControl
+          isRequired
+          isInvalid={'estado' in errors}
+          paddingY={2}
+          paddingX={4}
+        >
+          <Controller
+            control={control}
+            render={({ field: { onChange, value } }) => (
+              <Select
+                placeholder="Estado"
+                selectedValue={value}
+                onValueChange={(itemValue: string) => { onChange(itemValue); }}
+                variant="underlined"
+                size="2xl"
+                borderTopWidth={0}
+                borderLeftWidth={0}
+                borderRightWidth={0}
+                rounded="none"
+                _selectedItem={{
+                  bg: "cyan.600",
+                  endIcon: <CheckIcon size={4} />
+                }}
+              >
+                <Select.Item label="Estado" value="" />
+                {lista_estados_brasil.map((item, index) => {
+                  const { texto, valor } = item;
+                  
+                  return (
+                    <Select.Item key={index} label={texto} value={valor} />
+                  );
+                })}
+              </Select>
+            )}
+            name="estado"
+            rules={{ required: 'Selecione um item' }}
+            defaultValue=""
+          />
+          <FormControl.ErrorMessage>
+            <Text fontSize="xl" color="red">{errors.estado?.message}</Text>
+          </FormControl.ErrorMessage>
+        </FormControl>
       </VStack>
       <VStack space={1} marginTop={10} alignItems="center" width="full">
         <Button
@@ -151,3 +215,33 @@ const valoresIniciaisCliente: ClienteTypes = {
   confirmacao_senha: "", id: "", data_cadastro: "", data_modificacao_cadastro: "",
   empresaId: ""
 };
+
+const lista_estados_brasil = [
+  { valor: "AC", texto: "Acre" },
+  { valor: "AL", texto: "Alagoas" },
+  { valor: "AP", texto: "Amapá" },
+  { valor: "AM", texto: "Amazonas" },
+  { valor: "BA", texto: "Bahia" },
+  { valor: "CE", texto: "Ceará" },
+  { valor: "DF", texto: "Distrito Federal" },
+  { valor: "ES", texto: "Espírito Santo" },
+  { valor: "GO", texto: "Goiás" },
+  { valor: "MA", texto: "Maranhão" },
+  { valor: "MT", texto: "Mato Grosso" },
+  { valor: "MS", texto: "Mato Grosso do Sul" },
+  { valor: "MG", texto: "Minas Gerais" },
+  { valor: "PA", texto: "Pará" },
+  { valor: "PB", texto: "Paraíba" },
+  { valor: "PR", texto: "Paraná" },
+  { valor: "PE", texto: "Pernambuco" },
+  { valor: "PI", texto: "Piauí" },
+  { valor: "RJ", texto: "Rio de Janeiro" },
+  { valor: "RN", texto: "Rio Grande do Norte" },
+  { valor: "RS", texto: "Rio Grande do Sul" },
+  { valor: "RO", texto: "Rondônia" },
+  { valor: "RR", texto: "Roraima" },
+  { valor: "SC", texto: "Santa Catarina" },
+  { valor: "SP", texto: "São Paulo" },
+  { valor: "SE", texto: "Sergipe" },
+  { valor: "TO", texto: "Tocantins" }
+];

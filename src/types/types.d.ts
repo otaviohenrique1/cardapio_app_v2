@@ -33,37 +33,7 @@ interface UsuarioDadosTypes extends UsuarioTypes {
   data_modificacao_cadastro: string;
 }
 
-/* Parte da Refeicao */
-interface RefeicaoBaseTypes {
-  nome: string;
-  preco: number;
-}
-
-interface RefeicaoTypes extends RefeicaoBaseTypes {
-  ingredientes: IngredientesTypes[];
-  descricao: string;
-}
-
-interface ListaRefeicaoTypes extends RefeicaoBaseTypes {
-  id: string;
-}
-
-interface FotoTypes {
-  id: string;
-  url: string;
-  nome: string;
-}
-
-interface IngredientesTypes {
-  nome: string;
-  quantidade: number;
-}
-
-interface IngredientesOpcionaisTypes {
-  nome: string;
-  preco: number;
-}
-
+/* Parte do Cliente */
 interface ClienteTypes {
   email: string;
   senha: string;
@@ -82,6 +52,64 @@ interface ClienteTypes {
   empresaId: string;
 }
 
+/* Parte do navigation das rotas */
 type NavigationProps = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
+}
+
+/* Parte da Refeicao */
+// interface RefeicaoBaseTypes {
+//   nome: string;
+//   preco: number;
+// }
+
+// interface RefeicaoTypes extends RefeicaoBaseTypes {
+//   ingredientes: IngredientesTypes[];
+//   descricao: string;
+// }
+
+// interface ListaRefeicaoTypes extends RefeicaoBaseTypes {
+//   id: string;
+// }
+
+interface ProdutoCardapioBaseType {
+  id: number | string;
+  foto_miniatura: FotoTypes;
+  nome: string;
+  tipo: string;
+  preco: number | string;
+  ativo: boolean;
+}
+
+interface ProdutoCardapioType extends ProdutoCardapioBaseType {
+  fotos_galeria: FotoTypes[];
+  codigo: string;
+  descricao: string;
+  quantidade: number;
+  unidade_quantidade: string;
+  ingredientes: IngredientesBaseTypes[];
+  ingredientes_removiveis: IngredientesRemoviveisTypes[];
+  ingredientes_opcionais: IngredientesOpcionaisTypes[];
+  data_cadastro: Date;
+  data_modificacao_cadastro: Date;
+  empresaId: number;
+}
+
+interface FotoTypes {
+  id: number | string;
+  url: string;
+  nome: string;
+}
+
+interface IngredientesBaseTypes {
+  nome: string;
+  quantidade: number;
+}
+
+interface IngredientesRemoviveisTypes extends IngredientesBaseTypes {
+  removivel: boolean;
+}
+
+interface IngredientesOpcionaisTypes extends IngredientesBaseTypes {
+  preco: number;
 }

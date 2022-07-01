@@ -8,6 +8,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { CampoInputProps } from '../../components/CampoInput';
 import { Mensagem } from '../../utils/Mensagem';
 import { EMAIL_INVALIDO, MAXIMO_CARACTERES, MINIMO_CARACTERES, valor_maximo_carateres, valor_minimo_carateres } from '../../utils/constantes';
+import { lista_estados_brasil } from '../../utils/listas/lista_estados';
 
 type NavigationProps = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
@@ -215,33 +216,3 @@ const valoresIniciaisCliente: ClienteTypes = {
   confirmacao_senha: "", id: "", data_cadastro: "", data_modificacao_cadastro: "",
   empresaId: ""
 };
-
-const lista_estados_brasil = [
-  { valor: "AC", texto: "Acre" },
-  { valor: "AL", texto: "Alagoas" },
-  { valor: "AP", texto: "Amapá" },
-  { valor: "AM", texto: "Amazonas" },
-  { valor: "BA", texto: "Bahia" },
-  { valor: "CE", texto: "Ceará" },
-  { valor: "DF", texto: "Distrito Federal" },
-  { valor: "ES", texto: "Espírito Santo" },
-  { valor: "GO", texto: "Goiás" },
-  { valor: "MA", texto: "Maranhão" },
-  { valor: "MT", texto: "Mato Grosso" },
-  { valor: "MS", texto: "Mato Grosso do Sul" },
-  { valor: "MG", texto: "Minas Gerais" },
-  { valor: "PA", texto: "Pará" },
-  { valor: "PB", texto: "Paraíba" },
-  { valor: "PR", texto: "Paraná" },
-  { valor: "PE", texto: "Pernambuco" },
-  { valor: "PI", texto: "Piauí" },
-  { valor: "RJ", texto: "Rio de Janeiro" },
-  { valor: "RN", texto: "Rio Grande do Norte" },
-  { valor: "RS", texto: "Rio Grande do Sul" },
-  { valor: "RO", texto: "Rondônia" },
-  { valor: "RR", texto: "Roraima" },
-  { valor: "SC", texto: "Santa Catarina" },
-  { valor: "SP", texto: "São Paulo" },
-  { valor: "SE", texto: "Sergipe" },
-  { valor: "TO", texto: "Tocantins" }
-];

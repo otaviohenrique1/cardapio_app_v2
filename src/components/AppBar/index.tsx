@@ -19,7 +19,7 @@ export function AppBar(props: AppBarProps) {
         {/* <IconButton
           icon={<Icon size="lg" as={MaterialIcons} name="menu" color="white" />}
           padding="5"
-        /> */}
+        /> */}{/* Menu hamburger */}
         <Text color="white" fontSize="20" fontWeight="bold" paddingLeft="5">{titulo}</Text>
       </HStack>
       <HStack>

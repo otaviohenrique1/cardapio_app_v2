@@ -8,12 +8,9 @@ type NavigationProps = {
 }
 
 export default function HomePage({ navigation }: NavigationProps) {
-  const [data, setData] = useState<string>("")
-
   return (
     <Center height="full" paddingX={5} paddingY={8}>
       <Text marginBottom={10} fontSize={25}>HomePage</Text>
-      <Text marginBottom={10} fontSize={25}>{data}</Text>
       <VStack space={1} alignItems="center" width="full">
         <Button
           width="full"

@@ -6,10 +6,11 @@ import { ParamListBase } from "@react-navigation/native";
 interface AppBarProps {
   titulo: string;
   navigation: StackNavigationProp<ParamListBase, string>;
+  exibe_voltar: boolean;
 }
 
 export function AppBar(props: AppBarProps) {
-  const { titulo, navigation } = props;
+  const { titulo, navigation, exibe_voltar } = props;
 
   return <>
     <StatusBar backgroundColor="#3700B3" barStyle="light-content" />
@@ -20,7 +21,27 @@ export function AppBar(props: AppBarProps) {
           icon={<Icon size="lg" as={MaterialIcons} name="menu" color="white" />}
           padding="5"
         /> */}{/* Menu hamburger */}
-        <Text color="white" fontSize="20" fontWeight="bold" paddingLeft="5">{titulo}</Text>
+        {(exibe_voltar) ? (
+          <Pressable
+            onPress={() => navigation.replace("HomePage")}
+            padding="5"
+            justifyContent="center"
+            alignItems="centers"
+          >
+            <Icon size="lg" as={MaterialIcons} name="arrow-back" color="white" />
+          </Pressable>
+        ) : null}
+        {/* <IconButton
+            icon={<Icon size="lg" as={MaterialIcons} name="arrow-back" color="white" />}
+            padding="5"
+            onPress={() => navigation.replace("HomePage")}
+          /> */}
+        <Text
+          color="white"
+          fontSize="20"
+          fontWeight="bold"
+          paddingLeft={(exibe_voltar) ? "0" : "5"}
+        >{titulo}</Text>
       </HStack>
       <HStack>
         <IconButton

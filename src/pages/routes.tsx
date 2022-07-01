@@ -1,14 +1,25 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { Box, Center, HStack, Icon, IconButton, StatusBar, Text } from "native-base";
 import HomePage from "./HomePage";
 import Login from "./Login";
 import NovoUsuario from "./NovoUsuario";
-import { MaterialIcons } from "@expo/vector-icons";
+import { AppBar } from "../components/AppBar";
+import Produto from "./Produto";
+import Perfil from "./Perfil";
+import Favoritos from "./Favoritos";
+import Carrinho from "./Carrinho";
+import Historico from "./Historico";
+import Busca from "./Busca";
 
 export type RootStackParamList = {
   Login: undefined;
   NovoUsuario: undefined;
   HomePage: undefined;
+  Produto: undefined;
+  Perfil: undefined;
+  Favoritos: undefined;
+  Historico: undefined;
+  Carrinho: undefined;
+  Busca: undefined;
 }
 
 export function StackRoutes() {
@@ -29,36 +40,52 @@ export function StackRoutes() {
       <Stack.Screen
         name="HomePage"
         component={HomePage}
-        options={{ header: () => (
-          <AppBar titulo="HomePage" />
+        options={{ header: (props) => (
+          <AppBar titulo="Cardapio" navigation={props.navigation} />
+        ) }}
+      />
+      <Stack.Screen
+        name="Produto"
+        component={Produto}
+        options={{ header: (props) => (
+          <AppBar titulo="Produto" navigation={props.navigation} />
+        ) }}
+      />
+      <Stack.Screen
+        name="Perfil"
+        component={Perfil}
+        options={{ header: (props) => (
+          <AppBar titulo="Perfil" navigation={props.navigation} />
+        ) }}
+      />
+      <Stack.Screen
+        name="Favoritos"
+        component={Favoritos}
+        options={{ header: (props) => (
+          <AppBar titulo="Favoritos" navigation={props.navigation} />
+        ) }}
+      />
+      <Stack.Screen
+        name="Historico"
+        component={Historico}
+        options={{ header: (props) => (
+          <AppBar titulo="Historico" navigation={props.navigation} />
+        ) }}
+      />
+      <Stack.Screen
+        name="Carrinho"
+        component={Carrinho}
+        options={{ header: (props) => (
+          <AppBar titulo="Carrinho" navigation={props.navigation} />
+        ) }}
+      />
+      <Stack.Screen
+        name="Busca"
+        component={Busca}
+        options={{ header: (props) => (
+          <AppBar titulo="Busca" navigation={props.navigation} />
         ) }}
       />
     </Stack.Navigator>
   );
-}
-
-interface AppBarProps {
-  titulo: string;
-}
-
-function AppBar(props: AppBarProps) {
-  const { titulo } = props;
-
-  return <>
-      <StatusBar backgroundColor="#3700B3" barStyle="light-content" />
-      <Box safeAreaTop bg="#6200ee" />
-      <HStack bg="#6200ee" px="1" py="3" justifyContent="space-between" alignItems="center" w="100%">
-        <HStack alignItems="center">
-          <IconButton icon={<Icon size="sm" as={MaterialIcons} name="menu" color="white" />} />
-          <Text color="white" fontSize="20" fontWeight="bold">
-            {titulo}
-          </Text>
-        </HStack>
-        <HStack>
-          <IconButton icon={<Icon as={MaterialIcons} name="favorite" size="sm" color="white" />} />
-          <IconButton icon={<Icon as={MaterialIcons} name="search" size="sm" color="white" />} />
-          <IconButton icon={<Icon as={MaterialIcons} name="more-vert" size="sm" color="white" />} />
-        </HStack>
-      </HStack>
-    </>;
 }

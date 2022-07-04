@@ -87,9 +87,9 @@ interface ProdutoCardapioType extends ProdutoCardapioBaseType {
   descricao: string;
   quantidade: number;
   unidade_quantidade: string;
-  ingredientes: IngredientesBaseTypes[];
-  ingredientes_removiveis: IngredientesRemoviveisTypes[];
-  ingredientes_opcionais: IngredientesOpcionaisTypes[];
+  ingredientes: IngredientesTypes[];
+  ingredientes_removiveis: IngredientesTypes[];
+  ingredientes_opcionais: IngredientesTypes[];
   data_cadastro: Date;
   data_modificacao_cadastro: Date;
   empresaId: number;
@@ -101,15 +101,11 @@ interface FotoTypes {
   nome: string;
 }
 
-interface IngredientesBaseTypes {
+interface IngredientesTypes {
+  id: number | string;
   nome: string;
   quantidade: number;
-}
-
-interface IngredientesRemoviveisTypes extends IngredientesBaseTypes {
+  quantidade_unidade: string;
   removivel: boolean;
-}
-
-interface IngredientesOpcionaisTypes extends IngredientesBaseTypes {
   preco: number;
 }

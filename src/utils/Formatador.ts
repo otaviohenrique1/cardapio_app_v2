@@ -1,0 +1,5 @@
+export class Formatador {
+  static FormataValorMonetario(valor: number): string {
+    return `R$ ${valor.toFixed(2).replace(".", ",")}`;
+  }
+}

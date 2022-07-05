@@ -30,7 +30,8 @@ export function StackRoutes() {
   const Stack = createStackNavigator<RootStackParamList>();
 
   return (
-    <Stack.Navigator initialRouteName="HomePage">
+    // <Stack.Navigator initialRouteName="HomePage">
+    <Stack.Navigator initialRouteName="Produto">
       <Stack.Screen
         name="Login"
         component={Login}

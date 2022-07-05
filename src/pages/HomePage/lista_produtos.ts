@@ -1,8 +1,8 @@
 const pao: IngredientesTypes = {
   id: 1,
-  nome: "Pao",
+  nome: "Pão",
   quantidade: 1,
-  quantidade_unidade: "Unidade(Un)(s)",
+  quantidade_unidade: "unidade(s)",
   preco: 2,
   removivel: false,
 };
@@ -11,7 +11,7 @@ const hamburguer: IngredientesTypes = {
   id: 2,
   nome: "Hamburguer",
   quantidade: 1,
-  quantidade_unidade: "Unidade(Un)(s)",
+  quantidade_unidade: "unidade(s)",
   preco: 3,
   removivel: true,
 };
@@ -20,7 +20,7 @@ const queijo: IngredientesTypes = {
   id: 3,
   nome: "Queijo",
   quantidade: 50,
-  quantidade_unidade: "Grama(G)(s)",
+  quantidade_unidade: "grama(s)",
   preco: 2,
   removivel: true,
 }
@@ -29,7 +29,7 @@ const alface: IngredientesTypes = {
   id: 4,
   nome: "Alface",
   quantidade: 1,
-  quantidade_unidade: "Unidade(Un)(s)",
+  quantidade_unidade: "unidade(s)",
   preco: 2,
   removivel: true,
 }
@@ -38,7 +38,7 @@ const queijo_cheddar: IngredientesTypes = {
   id: 5,
   nome: "Queijo",
   quantidade: 50,
-  quantidade_unidade: "Grama(G)(s)",
+  quantidade_unidade: "grama(s)",
   preco: 3,
   removivel: true,
 }
@@ -47,7 +47,7 @@ const cebola: IngredientesTypes = {
   id: 6,
   nome: "Cebola",
   quantidade: 100,
-  quantidade_unidade: "Grama(G)(s)",
+  quantidade_unidade: "grama(s)",
   preco: 1.5,
   removivel: true,
 }
@@ -56,7 +56,7 @@ const milho: IngredientesTypes = {
   id: 7,
   nome: "Milho",
   quantidade: 80,
-  quantidade_unidade: "Grama(G)(s)",
+  quantidade_unidade: "grama(s)",
   preco: 2,
   removivel: true,
 }
@@ -65,7 +65,7 @@ const molho: IngredientesTypes = {
   id: 8,
   nome: "Molho",
   quantidade: 200,
-  quantidade_unidade: "Mililitros(Ml)(s)",
+  quantidade_unidade: "mililitros(s)",
   preco: 4,
   removivel: true,
 }
@@ -85,25 +85,35 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "04e8cfee-2d35-42e8-9554-67b2840fa283",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "angus_burger",
+    descricao: "Hambúrguer feito com carne bovina de gado Angus. O nome 'Angus burger' é usado por várias cadeias de hambúrgueres de fast-food para um ou mais hambúrgueres 'premium'; no entanto, não pertence a nenhuma empresa. Hambúrgueres Angus congelados pré-fabricados estão cada vez mais disponíveis nos varejistas.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 1,
         url: require("./fotos_produtos_miniaturas/angus_burger.jpg"),
         nome: 'angus_burger',
-      }
+      },
+      {
+        id: 2,
+        url: require("./fotos_produtos_miniaturas/angus_burger.jpg"),
+        nome: 'angus_burger',
+      },
+      {
+        id: 3,
+        url: require("./fotos_produtos_miniaturas/angus_burger.jpg"),
+        nome: 'angus_burger',
+      },
     ],
     ingredientes: [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -120,10 +130,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "f749bf18-f18b-4aeb-a89c-ff7f71356a1d",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "Cheeseburger",
+    descricao: "Hambúrguer acompanhado de queijo derretido. O próprio termo é uma junção das palavras 'queijo' e 'hambúrguer'. O queijo geralmente é fatiado e adicionado pouco tempo antes do hambúrguer terminar de cozinhar para permitir que derreta. Em restaurantes de fast food, o queijo que é adicionado ao cheeseburger é tipicamente americano, mas existem muitas outras variações. Mussarela, queijo azul, queijo suíço, pimenta jack e especialmente cheddar são escolhas populares.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 2,
@@ -135,10 +145,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo_cheddar
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo_cheddar
+      hamburguer, queijo_cheddar
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo_cheddar
+      hamburguer, queijo_cheddar
     ],
   },
   {
@@ -155,10 +165,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "227ec513-b722-4d4c-9b08-7ae2412acda6",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "rice_burger",
+    descricao: "Estilo de hambúrguer em que o pão é um bolo de arroz comprimido. A cadeia de restaurantes de fast-food MOS Burger introduziu o hambúrguer de arroz em 1987 e, desde então, tornou-se um item alimentar popular no leste da Ásia.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 3,
@@ -170,10 +180,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo, molho
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo, molho
+      hamburguer, queijo, molho
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo, molho
+      hamburguer, queijo, molho
     ],
   },
   {
@@ -190,10 +200,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "623002a0-122b-4470-bdab-01bdddc9fc99",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "slug_burger",
+    descricao: "Delicadeza tradicional do sul encontrada no nordeste do Mississippi, particularmente Booneville e Corinto. A receita original foi feita para ajudar as pessoas a aumentar sua oferta de carne bovina, adicionando migalhas de pão velhas à carne. O nome vem do hambúrguer originalmente custando 5 centavos, ou um níquel (uma 'lesma'). Hoje, um slugburger é um hambúrguer feito de uma mistura de carne bovina ou suína e um extensor barato, como soja ou farinha de soja, é frito em óleo. Normalmente é servido em um pão com mostarda, picles, cebola e, em alguns lugares, com batatas fritas.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 4,
@@ -205,45 +215,45 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo, molho
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo, molho
+      hamburguer, queijo, molho
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo, molho
+      hamburguer, queijo, molho
     ],
   },
   {
     id: 5,
-    nome: "X-Hamburger",
+    nome: "X-hamburguer",
     tipo: "Comida",
     preco: 10,
     foto_miniatura: {
       id: 5,
-      url: require("./fotos_produtos_miniaturas/x_hamburger.jpg"),
-      nome: "X-Hamburger",
+      url: require("./fotos_produtos_miniaturas/x_hamburguer.jpg"),
+      nome: "X-hamburguer",
     },
     ativo: true,
     codigo: "eeef22f5-082e-458b-8749-2047a98244b6",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "x_hamburger",
+    descricao: "Hambúrguer é um alimento que consiste em recheios - geralmente um hambúrguer de carne moída, geralmente carne bovina - colocados dentro de um pão fatiado ou pão. Hambúrgueres são frequentemente servidos com queijo, alface, tomate, cebola, picles, bacon ou chilis; condimentos como ketchup, mostarda, maionese, relish ou um 'molho especial', muitas vezes uma variação do molho Thousand Island; e são frequentemente colocados em pães de sementes de gergelim.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 5,
-        url: require("./fotos_produtos_miniaturas/x_hamburger.jpg"),
-        nome: 'x_hamburger',
+        url: require("./fotos_produtos_miniaturas/x_hamburguer.jpg"),
+        nome: 'x_hamburguer',
       }
     ],
     ingredientes: [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -260,10 +270,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "f8d28e71-328a-4fca-94ad-91129520ce3d",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "barbecue_burger",
+    descricao: "Preparado com carne moída, misturado com cebola e molho barbecue, e depois grelhado. Uma vez que a carne tenha sido virada uma vez, o molho barbecue é espalhado por cima e grelhado até o molho caramelizar. O pão é untado com manteiga e também espalhado com uma leve camada de molho barbecue, depois torrado na grelha.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 6,
@@ -275,10 +285,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo, molho
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo, molho
+      hamburguer, queijo, molho
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo, molho
+      hamburguer, queijo, molho
     ],
   },
   {
@@ -295,10 +305,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "55fcff6e-22ce-4130-a9fb-e9c7ff01d3d6",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "chili_burger",
+    descricao: "Consiste em um hambúrguer, com a empada coberta com chili com carne.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 7,
@@ -310,10 +320,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -330,10 +340,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "57f0c932-d427-4073-8401-3cf6bc31cd0c",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "kiwiburger",
+    descricao: "Ingredientes populares de hambúrgueres regionais na Austrália e Nova Zelândia incluem beterraba enlatada, abacaxi e ovo frito. Na foto é um hambúrguer com fatias de beterraba enlatada dentro dele.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 8,
@@ -345,10 +355,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -365,10 +375,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "be54fadd-e987-4d4e-ad3d-ff63c118251a",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "salmon_burger",
+    descricao: "Fishcake feito principalmente de salmão no estilo de um hambúrguer. Hambúrgueres de salmão são especialmente comuns no Alasca, onde são oferecidos rotineiramente como uma alternativa aos hambúrgueres de carne bovina.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 9,
@@ -380,10 +390,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -400,10 +410,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "1f10129a-518d-4d28-a240-0d8352eaf5b7",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "steak_burger",
+    descricao: "Normalmente preparado com carne de bife moída, fatiada ou picada. Carnes adicionais também são usadas.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 10,
@@ -415,10 +425,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -435,10 +445,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "3e485e7d-d6ae-411d-afe1-8dd1a5dd030a",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "buffalo_burger",
+    descricao: "Preparados com carne do bisonte americano, hambúrgueres de búfalo têm menos colesterol, menos gordura e menos calorias do que hambúrgueres de carne bovina e de frango. A American Heart Association recomendou hambúrgueres de búfalo em 1997 como mais saudáveis para o coração do que frango ou carne bovina.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 11,
@@ -450,10 +460,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -470,10 +480,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "e62484de-2bf3-4d68-a3f1-d1fb5bf0dc04",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "chori_burger",
+    descricao: "um hambúrguer filipino feito caracteristicamente com rissóis de chouriço (longganisa), ketchup de banana, maionese e atchara, além de tomate e alface. Foi popularizado pela primeira vez pelo Merly's BBQ, uma barraca de comida de rua na ilha de Boracay, nas Filipinas.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 12,
@@ -485,10 +495,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -505,10 +515,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "a48a70f5-5104-4252-aaad-f4449ced2a24",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "luther_burger",
+    descricao: "Hambúrguer ou cheeseburger preparado com uma ou mais rosquinhas vitrificadas no lugar do pão",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 13,
@@ -520,10 +530,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -540,10 +550,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "4c73eb61-a60b-40b8-aae0-d94e354954ab",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "slaters_50_50_burger",
+    descricao: "Meio bacon moído, meio hambúrguer de carne moída desenvolvido por Scott Slater para o restaurante Slater's 50/50. Outra variedade é metade de carne de canguru e metade de bacon.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 14,
@@ -555,10 +565,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -575,10 +585,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "e1ab70dd-c745-4cdd-9088-bc0b142eb083",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "steamed_cheeseburger",
+    descricao: "Em vez de ser frito em uma panela ou grelhado em uma grelha, um cheeseburger no vapor é cozido no vapor em um armário de aço inoxidável contendo bandejas que contêm um hambúrguer ou um pedaço de queijo. Este método de cozimento faz com que a gordura da carne derreta, resultando em um hambúrguer úmido e suculento que é então colocado em um pão e coberto com o queijo derretido. Várias coberturas habituais podem então ser adicionadas ao hambúrguer.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 15,
@@ -590,10 +600,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -610,10 +620,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "5b0c56f2-c231-43e4-b96a-102898b24969",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "butter_burger",
+    descricao: "No Upper Midwest, particularmente Wisconsin, os hambúrgueres são muitas vezes feitos com um pão amanteigado, manteiga como um dos ingredientes do hambúrguer ou com um pedaço de manteiga em cima do hambúrguer.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 16,
@@ -625,10 +635,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -645,10 +655,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "7b2952b1-4ad7-4cb8-ae4a-f2fd4093e112",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "hawaii_burger",
+    descricao: "Coberto com abacaxi e muitas vezes molho teriyaki (da cultura nipo-americana)",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 17,
@@ -660,10 +670,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -680,10 +690,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "37f4f852-96b0-4eca-af81-e6e361c00d12",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "oklahoma_onion_burger",
+    descricao: "Um hambúrguer que tem muitas cebolas amarelas em fatias finas empilhadas em cima da carne moída antes de esmagar. Foi concebido durante a Grande Depressão no oeste de Oklahoma como uma maneira de os clientes locais estenderem o suprimento de carne bovina de um restaurante.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 18,
@@ -695,10 +705,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -715,10 +725,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "47bb1a62-3c1f-4f14-8d62-5717d172675f",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "slider_burger",
+    descricao: "Refere-se principalmente a pequenos hambúrgueres, mas também pode cobrir qualquer pequeno sanduíche servido em um rolo deslizante",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 19,
@@ -730,10 +740,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -750,10 +760,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "c3600a83-06fb-4755-868b-243c0a313f28",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "Teriyaki Burger",
+    descricao: "Hambúrguer teriyaki refere-se a uma variedade de hambúrguer coberto com molho teriyaki ou com o molho trabalhado no hambúrguer de carne moída.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 20,
@@ -765,10 +775,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -785,10 +795,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "feac6d6c-01fa-463b-9d78-32cf2c80704b",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "california_burger",
+    descricao: "No oeste dos EUA, um hambúrguer 'Califórnia' geralmente consiste em um cheeseburger normal, com a adição de bacon e guacamole ou abacate. No leste dos EUA, o California Burger é tradicionalmente um hambúrguer com alface, tomate e cebola crua.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 21,
@@ -800,10 +810,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -820,10 +830,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "fddad7c5-a7f4-46da-bdd1-80c943b8f9df",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "jucy_lucy_cheeseburger",
+    descricao: "Um cheeseburger que tem o queijo dentro do hambúrguer de carne e não no topo. Um pedaço de queijo é cercado por carne crua e cozido até derreter, resultando em um núcleo de queijo fundido dentro do hambúrguer.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 22,
@@ -835,10 +845,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -855,10 +865,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "9d9715b9-a562-4691-90ab-8dc1c57d73de",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "patty_melt_burger",
+    descricao: "Sanduíche de hambúrguer composto por um hambúrguer de carne moída, pedaços de cebola salteada ou grelhada e Cheddar ou queijo suíço entre duas fatias de pão (tradicionalmente centeio, embora às vezes seja substituído).",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 23,
@@ -870,10 +880,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -890,10 +900,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "e1ca6619-c9af-43cf-89dc-0be705ad4f1f",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "slopper_burger",
+    descricao: "Cheeseburger, ou hambúrguer servido aberto e envolto em chile vermelho ou chile verde (também conhecido como chile verde ou molho de chile verde). Sloppers geralmente incluem pães grelhados e muitas vezes são cobertos com cebolas frescas picadas. Comer um slopper não é tarefa fácil. O uso de garfo ou colher é essencial, mas recomenda-se a combinação de garfo e faca ou garfo e colher.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 24,
@@ -905,10 +915,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -925,10 +935,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "3df04416-9223-49e7-8c8c-41b7b4c2c33c",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "veggie_burger",
+    descricao: "Hambúrguer vegetariano, hambúrguer de jardim ou hambúrguer de tofu usa um análogo de carne, um substituto de carne como tofu, proteína vegetal texturizada, seitan (glúten de trigo), Quorn, feijão, grãos ou uma variedade de vegetais, que são moídos e moldados em hambúrgueres.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 25,
@@ -940,10 +950,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -960,10 +970,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "3988dfa6-922f-4f64-bc75-1dfc3c581c2c",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "kimchi_burger",
+    descricao: "Um hambúrguer que inclui kimchi em sua preparação",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 26,
@@ -975,10 +985,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -995,10 +1005,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "55d648e3-1c93-4f31-950b-dd5d88e3d95f",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "coca_cola_1_5l",
+    descricao: "Coca-Cola, ou Coca-Cola, é um refrigerante carbonatado fabricado pela Coca-Cola Company.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 27,
@@ -1010,10 +1020,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -1030,10 +1040,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "500acc0d-a444-43ef-b1b2-3965c40e5596",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "coca_cola_1l",
+    descricao: "Coca-Cola, ou Coca-Cola, é um refrigerante carbonatado fabricado pela Coca-Cola Company.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 28,
@@ -1045,10 +1055,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -1065,10 +1075,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "76a6eb62-2744-4bc9-ad12-3b25b3300265",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "coca_cola_2_5l",
+    descricao: "Coca-Cola, ou Coca-Cola, é um refrigerante carbonatado fabricado pela Coca-Cola Company.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 29,
@@ -1080,10 +1090,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -1100,10 +1110,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "626f2c5f-2b8f-4b01-ae2c-589c267e7fc5",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "coca_cola_200ml",
+    descricao: "Coca-Cola, ou Coca-Cola, é um refrigerante carbonatado fabricado pela Coca-Cola Company.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 30,
@@ -1115,10 +1125,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -1135,10 +1145,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "3dd3761a-d888-4905-825e-0b31aac0cafe",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "coca_cola_220ml",
+    descricao: "Coca-Cola, ou Coca-Cola, é um refrigerante carbonatado fabricado pela Coca-Cola Company.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 31,
@@ -1150,10 +1160,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -1170,10 +1180,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "392eed80-3b5e-4373-91d9-d66fed93bb6b",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "coca_cola_2l",
+    descricao: "Coca-Cola, ou Coca-Cola, é um refrigerante carbonatado fabricado pela Coca-Cola Company.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 32,
@@ -1185,10 +1195,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -1205,10 +1215,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "96ce12cd-b430-47e8-b4f4-ca11900bf9fe",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "coca_cola_350ml",
+    descricao: "Coca-Cola, ou Coca-Cola, é um refrigerante carbonatado fabricado pela Coca-Cola Company.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 33,
@@ -1220,10 +1230,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -1240,10 +1250,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "635a2f6d-3ff3-4b31-af91-eff6f76f35f7",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "coca_cola_3l",
+    descricao: "Coca-Cola, ou Coca-Cola, é um refrigerante carbonatado fabricado pela Coca-Cola Company.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 34,
@@ -1255,10 +1265,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -1275,10 +1285,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "7ef10fab-b97b-44c8-83c7-d02458053748",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "coca_cola_600ml",
+    descricao: "Coca-Cola, ou Coca-Cola, é um refrigerante carbonatado fabricado pela Coca-Cola Company.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 35,
@@ -1290,10 +1300,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
   {
@@ -1310,10 +1320,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
     codigo: "c5ed0d01-3b4f-4398-9cfe-e0b27263c1af",
     data_cadastro: new Date(),
     data_modificacao_cadastro: new Date(),
-    descricao: "coca_cola_600ml",
+    descricao: "Coca-Cola, ou Coca-Cola, é um refrigerante carbonatado fabricado pela Coca-Cola Company.",
     empresaId: 1,
     quantidade: 10,
-    unidade_quantidade: "Unidade(s)",
+    unidade_quantidade: "unidade(s)",
     fotos_galeria: [
       {
         id: 36,
@@ -1325,10 +1335,10 @@ export const lista_produtos: ProdutoCardapioType[] = [
       pao, hamburguer, queijo
     ],
     ingredientes_opcionais: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
     ingredientes_removiveis: [
-      pao, hamburguer, queijo
+      hamburguer, queijo
     ],
   },
 ];

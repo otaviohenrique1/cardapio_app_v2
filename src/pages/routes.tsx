@@ -14,8 +14,12 @@ export type RootStackParamList = {
   Login: undefined;
   NovoUsuario: undefined;
   HomePage: undefined;
-  Produto: undefined;
-  Perfil: undefined;
+  Produto: {
+    id: string,
+  };
+  Perfil: {
+    id: string,
+  };
   Favoritos: undefined;
   Historico: undefined;
   Carrinho: undefined;

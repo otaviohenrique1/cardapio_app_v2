@@ -139,7 +139,6 @@ export default function Produto({ route, navigation }: NavigationProps) {
               return (
                 <HStack
                   space={3}
-                  justifyContent="space-between"
                   key={id}
                 >
                   <Text
@@ -183,6 +182,9 @@ export default function Produto({ route, navigation }: NavigationProps) {
                   marginX={1}
                   borderWidth={1}
                   borderColor="gray.400"
+                  onPress={() => {
+                    alert(nome)
+                  }}
                 >
                   <Image
                     source={{ uri: url }}
@@ -214,26 +216,27 @@ export default function Produto({ route, navigation }: NavigationProps) {
             renderItem={(item) => {
               const { id, nome, quantidade, quantidade_unidade } = item.item;
               return (
-                <HStack
-                  space={3}
-                  justifyContent="space-between"
-                  alignItems="center"
-                >
-                  <Checkbox value='opcional' />
-                  <Text
-                    fontSize="xl"
-                    _dark={{ color: "warmGray.50" }}
-                    color="coolGray.800" bold
-                    alignSelf="flex-start"
-                  >{nome}</Text>
-                  <Spacer />
-                  <Text
-                    fontSize="xl"
-                    _dark={{ color: "warmGray.50" }}
-                    color="coolGray.800"
-                    alignSelf="flex-start"
-                  >{`${quantidade} ${quantidade_unidade}`}</Text>
-                </HStack>
+                <Checkbox value='opcional'>
+                  <HStack
+                    space={3}
+                    justifyContent="space-between"
+                    alignItems="center"
+                  >
+                    <Text
+                      fontSize="xl"
+                      _dark={{ color: "warmGray.50" }}
+                      color="coolGray.800" bold
+                      alignSelf="flex-start"
+                    >{nome}</Text>
+                    <Spacer />
+                    <Text
+                      fontSize="xl"
+                      _dark={{ color: "warmGray.50" }}
+                      color="coolGray.800"
+                      alignSelf="flex-start"
+                    >{`${quantidade} ${quantidade_unidade}`}</Text>
+                  </HStack>
+                </Checkbox>
               );
             }}
             keyExtractor={(item) => String(item.id)}
@@ -257,26 +260,23 @@ export default function Produto({ route, navigation }: NavigationProps) {
             renderItem={(item) => {
               const { nome, quantidade, quantidade_unidade } = item.item;
               return (
-                <Checkbox
-                  value='removivel'
-                  >
+                <Checkbox value='removivel'>
                   <HStack
                     space={3}
                     justifyContent="space-between"
-                    width="full"
                   >
                     <Text
                       fontSize="xl"
                       _dark={{ color: "warmGray.50" }}
                       color="coolGray.800" bold
-                      // alignSelf="flex-start"
+                    // alignSelf="flex-start"
                     >{nome}</Text>
                     <Spacer />
                     <Text
                       fontSize="xl"
                       _dark={{ color: "warmGray.50" }}
                       color="coolGray.800"
-                      // alignSelf="flex-start"
+                    // alignSelf="flex-start"
                     >{`${quantidade} ${quantidade_unidade}`}</Text>
                   </HStack>
                 </Checkbox>

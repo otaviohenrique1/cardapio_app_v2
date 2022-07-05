@@ -92,7 +92,7 @@ interface ProdutoCardapioType extends ProdutoCardapioBaseType {
   ingredientes_opcionais: IngredientesTypes[];
   data_cadastro: Date;
   data_modificacao_cadastro: Date;
-  empresaId: number;
+  empresaId: number | string;
 }
 
 interface FotoTypes {

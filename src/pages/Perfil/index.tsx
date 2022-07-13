@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { Center, Text, Button, VStack } from "native-base";
+import { Text, Button, VStack, HStack } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { login_data } from '../Login/login_data';
@@ -17,58 +17,66 @@ export default function Perfil({ navigation }: NavigationProps) {
     id: '', nome: '', email: '', senha: '',
     confirmacao_senha: '', rua: '', numero: '',
     bairro: '', cidade: '', estado: '', cep: '',
-    telefone: '', empresaId: '', data_cadastro: '',
-    data_modificacao_cadastro: '',
+    complemento: '', telefone: '', empresaId: '',
+    data_cadastro: '', data_modificacao_cadastro: '',
   };
 
   const [data, setData] = useState<ClienteTypes>(dadosIniciais);
 
   useEffect(() => {
-    // let resultado_busca = login_data[0];
-    let resultado_busca = login_data.find((item) =>  item.id === String(dataUsuarioLogin.id));
+    let resultado_busca = login_data[0];
+    setData(resultado_busca);
 
-    let resultado_validado = (resultado_busca) ? resultado_busca : dadosIniciais;
+    // let resultado_busca = login_data.find((item) =>  item.id === String(dataUsuarioLogin.id));
+    // let resultado_validado = (resultado_busca) ? resultado_busca : dadosIniciais;
+    // setData(resultado_validado);
 
-    const { id, nome, email, senha, confirmacao_senha, rua, numero, bairro, cidade, estado, cep, telefone, data_cadastro, data_modificacao_cadastro, empresaId } = resultado_validado;
-    
-    let resultado_formatado: ClienteTypes = {
-      id: (id !== '') ? id : "id",
-      nome: (nome !== '') ? nome : "nome",
-      email: (email !== '') ? email : "email",
-      senha: (senha !== '') ? Formatador.FormataExibicaoSenha(senha) : "**********",
-      confirmacao_senha: (confirmacao_senha !== '') ? Formatador.FormataExibicaoSenha(confirmacao_senha) : "**********",
-      rua: (rua !== '') ? rua : "rua",
-      numero: (numero !== '') ? numero : "numero",
-      bairro: (bairro !== '') ? bairro : "bairro",
-      cidade: (cidade !== '') ? cidade : "cidade",
-      estado: (estado !== '') ? estado : "estado",
-      cep: (cep !== '') ? Formatador.FormataCep(cep) : "cep",
-      telefone: (telefone !== '') ? Formatador.FormataTelefone(telefone) : "telefone",
-      data_cadastro: (data_cadastro !== '') ? Formatador.FormatadorDataHora(data_cadastro, "dd/MM/yyyy HH:mm:ss") : "##/##/####",
-      data_modificacao_cadastro: (data_modificacao_cadastro !== '') ? Formatador.FormatadorDataHora(data_modificacao_cadastro, "dd/MM/yyyy HH:mm:ss") : "##/##/####",
-      empresaId: (empresaId !== '') ? empresaId : "empresaId",
-    };
-    setData(resultado_validado);
-  }, [])
-  
-  const { nome, email, senha, rua, numero, bairro, cidade, estado, cep, telefone, data_cadastro, data_modificacao_cadastro } = data;
+    // console.log(resultado_busca.cep.substring(0, 5));
+    // console.log(resultado_busca.cep.substring(5, resultado_busca.cep.length));
+    // console.log(resultado_busca.cep.substring(0, resultado_busca.cep.length-3));
+    // console.log(resultado_busca.cep.substring(resultado_busca.cep.length-3, resultado_busca.cep.length));
+  }, []);
+
+  const { nome, email, senha, rua, numero, complemento, bairro, cidade, estado, cep, telefone, data_cadastro, data_modificacao_cadastro } = data;
 
   return (
-    <Center height="full" paddingX={5} paddingY={8}>
-      <VStack space={1} alignItems="center" width="full">
-        <Text fontSize="4xl">{nome}</Text>
-        <Text fontSize="2xl">{email}</Text>
-        <Text fontSize="2xl">{senha}</Text>
-        <Text fontSize="2xl">{rua}</Text>
-        <Text fontSize="2xl">{numero}</Text>
-        <Text fontSize="2xl">{bairro}</Text>
-        <Text fontSize="2xl">{cidade}</Text>
-        <Text fontSize="2xl">{estado}</Text>
-        <Text fontSize="2xl">{cep}</Text>
-        <Text fontSize="2xl">{telefone}</Text>
-        <Text fontSize="2xl">{data_cadastro}</Text>
-        <Text fontSize="2xl">{data_modificacao_cadastro}</Text>
-      </VStack>
-    </Center>
+    <VStack height="full" paddingX={5} paddingY={3} space={1} width="full">
+      <ItemPerfil titulo="Nome:" valor={nome || "[nome]"} />
+      <ItemPerfil titulo="E-mail:" valor={email || "[email]"} />
+      <ItemPerfil titulo="Senha:" valor={Formatador.FormataExibicaoSenha(senha) || "[senha]"} />
+      <ItemPerfil titulo="Rua:" valor={rua || "[rua]"} />
+      <ItemPerfil titulo="Numero:" valor={numero || "[numero]"} />
+      <ItemPerfil titulo="Complemento:" valor={complemento || "[complemento]"} />
+      <ItemPerfil titulo="Bairro:" valor={bairro || "[bairro]"} />
+      <ItemPerfil titulo="Cidade:" valor={cidade || "[cidade]"} />
+      <ItemPerfil titulo="Estado:" valor={estado || "[estado]"} />
+      <ItemPerfil titulo="CEP:" valor={Formatador.FormataCep(cep) || "[cep]"} />
+      <ItemPerfil titulo="Telefone:" valor={Formatador.FormataTelefone(telefone) || "[telefone]"} />
+      <ItemPerfil titulo="Cadastro:" valor={data_cadastro} />
+      <ItemPerfil titulo="Modificação: " valor={data_modificacao_cadastro} />
+    </VStack>
+  );
+}
+
+interface ItemPerfilProps {
+  titulo: string;
+  valor: string;
+}
+
+function ItemPerfil(props: ItemPerfilProps) {
+  const { titulo, valor } = props;
+
+  return (
+    <HStack
+      alignItems="center"
+      borderBottomWidth="1"
+      borderBottomColor="gray.300"
+      paddingBottom="2"
+      paddingX="2"
+      marginBottom="2"
+    >
+      <Text fontSize="xl" bold>{titulo}</Text>
+      <Text fontSize="2xl" marginLeft={5} textAlign="justify">{valor}</Text>
+    </HStack>
   );
 }

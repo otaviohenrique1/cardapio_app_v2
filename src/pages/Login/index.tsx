@@ -40,6 +40,7 @@ export default function Login({ navigation }: NavigationProps) {
       });
       navigation.navigate("HomePage");
     }
+    alert("Dados inválidos");
     return (
       <Modal isOpen={showModal} onClose={setShowModal} size="lg">
         <Modal.Content>

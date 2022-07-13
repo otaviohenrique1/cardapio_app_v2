@@ -31,7 +31,7 @@ export function StackRoutes() {
 
   return (
     // <Stack.Navigator initialRouteName="HomePage">
-    <Stack.Navigator initialRouteName="Produto">
+    <Stack.Navigator initialRouteName="Perfil">
       <Stack.Screen
         name="Login"
         component={Login}

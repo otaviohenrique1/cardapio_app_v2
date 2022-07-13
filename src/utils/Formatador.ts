@@ -6,29 +6,34 @@ export class Formatador {
   }
 
   static FormataCep(valor: string): string {
-    let primeira_parte = valor.substring(0, 4);
-    let segunda_parte = valor.substring(5, 7);
-    return `${primeira_parte}-${segunda_parte}`;
+    return valor.replace(/\D/g, '')
+      .replace(/(\d{5})(\d)/, '$1-$2')
+      .replace(/(-\d{3})\d+?$/, '$1');
   }
 
   /*
-    (12)3101-4087
-    (12)99174-6339
+    1231014087
     1231014087 => 10
+    (12)31014087
+    (12)3101-4087
+
+    12991746339
     12991746339 => 11
+    (12)991746339
+    (12)99174-6339
   */
+ 
   static FormataTelefone(valor: string): string {
     if (valor.length === 10) {
-      let primeira_parte = valor.substring(0, 1);
-      let segunda_parte = valor.substring(2, 5);
-      let terceira_parte = valor.substring(6, 9);
-      return `(${primeira_parte}) ${segunda_parte}-${terceira_parte}`;
-    }
-    if (valor.length === 11) {
-      let primeira_parte = valor.substring(0, 1);
-      let segunda_parte = valor.substring(2, 6);
-      let terceira_parte = valor.substring(7, 10);
-      return `(${primeira_parte}) ${segunda_parte}-${terceira_parte}`;
+      return valor.replace(/\D/g, '')
+        .replace(/(\d{2})(\d)/, '($1) $2')
+        .replace(/(\d{4})(\d)/, '$1-$2')
+        .replace(/(-\d{4})\d+?$/, '$1')
+    } else if (valor.length === 11) {
+      return valor.replace(/\D/g, '')
+        .replace(/(\d{2})(\d)/, '($1) $2')
+        .replace(/(\d{5})(\d)/, '$1-$2')
+        .replace(/(-\d{4})\d+?$/, '$1')
     }
     return valor;
   }

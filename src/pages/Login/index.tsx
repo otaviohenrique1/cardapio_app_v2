@@ -1,5 +1,5 @@
-import React from 'react';
-import { Center, Text, Button, VStack, Input, FormControl } from "native-base";
+import React, { useState } from 'react';
+import { Center, Text, Button, VStack, Input, FormControl, Modal } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useForm, Controller } from 'react-hook-form';
@@ -8,19 +8,42 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import CampoInput, { CampoInputProps } from '../../components/CampoInput';
 import { valoresIniciaisLogin } from '../../utils/constantes';
 import { schemaValidacaoFormularioLogin } from '../../utils/ValidacaoSchemas';
+import { login_data } from './login_data';
 
 type NavigationProps = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
 }
 
 export default function Login({ navigation }: NavigationProps) {
+  const [showModal, setShowModal] = useState(false);
+
   const { control, handleSubmit, formState: { errors }, reset } = useForm<LoginTypes>({
     defaultValues: valoresIniciaisLogin,
     resolver: yupResolver(schemaValidacaoFormularioLogin)
   });
 
   function onSubmit(values: LoginTypes) {
-    navigation.navigate("HomePage")
+    const email = values.email;
+    const senha = values.senha;
+
+    let resultado_busca_email = login_data.find((item) => item.email === email);
+    let resultado_busca_senha = login_data.find((item) => item.senha === senha);
+
+    if (resultado_busca_email && resultado_busca_senha) {
+      navigation.navigate("HomePage");
+    }
+    return (
+      <Modal isOpen={showModal} onClose={setShowModal} size="lg">
+        <Modal.Content>
+          <Modal.CloseButton />
+          <Modal.Header>Erro!</Modal.Header>
+          <Modal.Body>Dados inválidos</Modal.Body>
+          <Modal.Footer>
+            <Button onPress={() => { setShowModal(!showModal); }} colorScheme="error">Fechar</Button>
+          </Modal.Footer>
+        </Modal.Content>
+      </Modal>
+    );
   }
 
   const lista_dados_campos: CampoInputProps[] = [

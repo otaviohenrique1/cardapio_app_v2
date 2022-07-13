@@ -67,7 +67,7 @@ export function AppBar(props: AppBarProps) {
           );
         }}>
           <Menu.Item
-            onPress={() => navigation.replace('Perfil')}
+            onPress={() => navigation.replace('Perfil', { id: String(0) /* id: String(id) */ })}
           >Perfil</Menu.Item>
           <Menu.Item
             onPress={() => navigation.replace('Favoritos')}

@@ -5,6 +5,7 @@ const pao: IngredientesTypes = {
   quantidade_unidade: "unidade(s)",
   preco: 2,
   removivel: false,
+  opcional: false,
 };
 
 const hamburguer: IngredientesTypes = {
@@ -14,6 +15,7 @@ const hamburguer: IngredientesTypes = {
   quantidade_unidade: "unidade(s)",
   preco: 3,
   removivel: true,
+  opcional: true,
 };
 
 const queijo: IngredientesTypes = {
@@ -23,6 +25,7 @@ const queijo: IngredientesTypes = {
   quantidade_unidade: "grama(s)",
   preco: 2,
   removivel: true,
+  opcional: true,
 }
 
 const alface: IngredientesTypes = {
@@ -32,6 +35,7 @@ const alface: IngredientesTypes = {
   quantidade_unidade: "unidade(s)",
   preco: 2,
   removivel: true,
+  opcional: true,
 }
 
 const queijo_cheddar: IngredientesTypes = {
@@ -41,6 +45,7 @@ const queijo_cheddar: IngredientesTypes = {
   quantidade_unidade: "grama(s)",
   preco: 3,
   removivel: true,
+  opcional: true,
 }
 
 const cebola: IngredientesTypes = {
@@ -50,6 +55,7 @@ const cebola: IngredientesTypes = {
   quantidade_unidade: "grama(s)",
   preco: 1.5,
   removivel: true,
+  opcional: true,
 }
 
 const milho: IngredientesTypes = {
@@ -59,6 +65,7 @@ const milho: IngredientesTypes = {
   quantidade_unidade: "grama(s)",
   preco: 2,
   removivel: true,
+  opcional: true,
 }
 
 const molho: IngredientesTypes = {
@@ -68,6 +75,7 @@ const molho: IngredientesTypes = {
   quantidade_unidade: "mililitros(s)",
   preco: 4,
   removivel: true,
+  opcional: true,
 }
 
 export const lista_produtos: ProdutoCardapioType[] = [

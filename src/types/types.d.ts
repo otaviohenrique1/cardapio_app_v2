@@ -107,5 +107,6 @@ interface IngredientesTypes {
   quantidade: number;
   quantidade_unidade: string;
   removivel: boolean;
+  opcional: boolean;
   preco: number;
 }

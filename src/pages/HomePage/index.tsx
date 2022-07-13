@@ -29,9 +29,7 @@ export default function HomePage({ navigation }: NavigationProps) {
           return (
             <Pressable
               width="full"
-              onPress={() => navigation.navigate("Produto", {
-                id: String(id)
-              })}
+              onPress={() => navigation.navigate("Produto", { id: String(id) })}
             >
               <Box
                 borderBottomWidth="1"

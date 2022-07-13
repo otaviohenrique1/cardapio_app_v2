@@ -1,7 +1,9 @@
-import { Box, HStack, Icon, IconButton, StatusBar, Text, Menu, Pressable } from "native-base";
-import { MaterialIcons } from "@expo/vector-icons";
+import { useContext, useState, useEffect } from "react";
+import { UsuarioContext, UsuarioLogin, dados_iniciais_usuario } from "../../context/usuario";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ParamListBase } from "@react-navigation/native";
+import { Box, HStack, Icon, IconButton, StatusBar, Text, Menu, Pressable } from "native-base";
+import { MaterialIcons } from "@expo/vector-icons";
 
 interface AppBarProps {
   titulo: string;
@@ -11,6 +13,15 @@ interface AppBarProps {
 
 export function AppBar(props: AppBarProps) {
   const { titulo, navigation, exibe_voltar } = props;
+  const { dataUsuarioLogin } = useContext(UsuarioContext);
+  const [dataUsuario, setDataUsuario] = useState<UsuarioLogin>(dados_iniciais_usuario);
+
+  useEffect(() => {
+    let id = (dataUsuarioLogin) ? dataUsuarioLogin.id : "0";
+    let nome = (dataUsuarioLogin) ? dataUsuarioLogin.nome : "nome";
+    let email = (dataUsuarioLogin) ? dataUsuarioLogin.email : "email@email.com";
+    setDataUsuario({ id, nome, email });
+  }, []);
 
   return <>
     <StatusBar backgroundColor="#3700B3" barStyle="light-content" />
@@ -67,7 +78,7 @@ export function AppBar(props: AppBarProps) {
           );
         }}>
           <Menu.Item
-            onPress={() => navigation.replace('Perfil', { id: String(0) /* id: String(id) */ })}
+            onPress={() => navigation.replace('Perfil', { id: dataUsuario.id /* id: String(0) */ /* id: String(id) */ })}
           >Perfil</Menu.Item>
           <Menu.Item
             onPress={() => navigation.replace('Favoritos')}

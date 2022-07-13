@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Center, Text, Button, VStack, Input, FormControl, Modal } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
@@ -9,6 +9,7 @@ import CampoInput, { CampoInputProps } from '../../components/CampoInput';
 import { valoresIniciaisLogin } from '../../utils/constantes';
 import { schemaValidacaoFormularioLogin } from '../../utils/ValidacaoSchemas';
 import { login_data } from './login_data';
+import { UsuarioContext } from '../../context/usuario';
 
 type NavigationProps = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
@@ -16,6 +17,8 @@ type NavigationProps = {
 
 export default function Login({ navigation }: NavigationProps) {
   const [showModal, setShowModal] = useState(false);
+
+  const { setDataUsuarioLogin } = useContext(UsuarioContext);
 
   const { control, handleSubmit, formState: { errors }, reset } = useForm<LoginTypes>({
     defaultValues: valoresIniciaisLogin,
@@ -30,6 +33,11 @@ export default function Login({ navigation }: NavigationProps) {
     let resultado_busca_senha = login_data.find((item) => item.senha === senha);
 
     if (resultado_busca_email && resultado_busca_senha) {
+      setDataUsuarioLogin({
+        id: resultado_busca_email.id,
+        nome: resultado_busca_email.nome,
+        email: resultado_busca_email.email,
+      });
       navigation.navigate("HomePage");
     }
     return (

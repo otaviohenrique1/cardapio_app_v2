@@ -54,6 +54,10 @@ export default function NovoUsuario({ navigation }: NavigationProps) {
       keyboardType: "default", secureTextEntry: false, defaultValue: "", editable: true, isInvalid: "numero" in errors,
     },
     {
+      control: control, name: "complemento", menssagem_erro: errors.complemento?.message, placeholder: "Complemento",
+      keyboardType: "default", secureTextEntry: false, defaultValue: "", editable: true, isInvalid: "complemento" in errors,
+    },
+    {
       control: control, name: "bairro", menssagem_erro: errors.bairro?.message, placeholder: "Bairro",
       keyboardType: "default", secureTextEntry: false, defaultValue: "", editable: true, isInvalid: "bairro" in errors,
     },
@@ -206,6 +210,7 @@ const validacaoSchemaCliente = Yup.object({
   bairro: Yup.string().required(Mensagem.MensagemErro("bairro")),
   cidade: Yup.string().required(Mensagem.MensagemErro("cidade")),
   estado: Yup.string().required(Mensagem.MensagemErro("estado")),
+  complemento: Yup.string().required(Mensagem.MensagemErro("complemento")),
   cep: Yup.string().required(Mensagem.MensagemErro("cep")),
   telefone: Yup.string().required(Mensagem.MensagemErro("telefone")),
 });
@@ -213,6 +218,6 @@ const validacaoSchemaCliente = Yup.object({
 const valoresIniciaisCliente: ClienteTypes = {
   email: '', senha: '', nome: '', rua: '', numero: '',
   bairro: '', cidade: '', estado: '', cep: '', telefone: '',
-  confirmacao_senha: "", id: "", data_cadastro: "", data_modificacao_cadastro: "",
-  empresaId: ""
+  confirmacao_senha: "", id: "", complemento: "", empresaId: "",
+  data_cadastro: "", data_modificacao_cadastro: "",
 };

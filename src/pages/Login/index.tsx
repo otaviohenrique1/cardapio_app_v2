@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Center, Text, Button, VStack, Input, FormControl, Modal, Icon } from "native-base";
+import { Center, Text, Button, VStack, Input, FormControl, Modal, Icon, Box } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useForm, Controller } from 'react-hook-form';
@@ -9,7 +9,7 @@ import { valoresIniciaisLogin } from '../../utils/constantes';
 import { schemaValidacaoFormularioLogin } from '../../utils/ValidacaoSchemas';
 import { login_data } from './login_data';
 import { UsuarioContext } from '../../context/usuario';
-import { FontAwesome } from '@expo/vector-icons';
+import { FontAwesome, Entypo  } from '@expo/vector-icons';
 
 type NavigationProps = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
@@ -33,7 +33,7 @@ export default function Login({ navigation }: NavigationProps) {
     // let resultado_busca_senha = login_data.find((item) => item.senha === senha);
 
     if (!resultado_busca_email) {
-      // alert("Dados inválidos");
+      alert("Dados inválidos");
       return (
         <Modal isOpen={showModal} onClose={setShowModal} size="lg">
           <Modal.Content>
@@ -69,7 +69,10 @@ export default function Login({ navigation }: NavigationProps) {
 
   return (
     <Center height="full" paddingX="5" paddingY="6">
-      <Text fontSize="5xl" marginBottom="8">Login</Text>
+      <Box marginBottom="10">
+        <Icon as={Entypo} name="open-book" size="6xl" color="indigo.600" />
+      </Box>
+      <Text fontSize="4xl" marginBottom="8">{"CardapioApp+"}</Text>
       <VStack space={1} alignItems="center" width="full">
         {lista_dados_campos.map((item, index) => {
           const { control, name, isInvalid, placeholder, keyboardType, secureTextEntry,

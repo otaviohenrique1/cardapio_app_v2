@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Center, Text, Button, VStack, FormControl, Input, Select, CheckIcon } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';

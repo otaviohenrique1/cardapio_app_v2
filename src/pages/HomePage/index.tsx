@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Text, VStack, FlatList, Box, HStack, Avatar, Spacer, Image, Icon, Pressable } from "native-base";
+import { VStack } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { MaterialIcons } from "@expo/vector-icons";
 import { lista_produtos } from './lista_produtos';
-import { Formatador } from '../../utils/Formatador';
 import ListaProdutos from '../../components/Listas/ListaProdutos';
 import ItemListaVazia from '../../components/Listas/ItemListaVazia';
 

@@ -5,12 +5,14 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { login_data } from '../Login/login_data';
 import { Formatador } from '../../utils/Formatador';
 import { UsuarioContext } from '../../context/usuario';
+import { RouteProp } from '@react-navigation/native';
 
 type NavigationProps = {
-  navigation: NativeStackNavigationProp<RootStackParamList>;
+  navigation: NativeStackNavigationProp<RootStackParamList, "Perfil">;
+  route: RouteProp<RootStackParamList>
 }
 
-export default function Perfil({ navigation }: NavigationProps) {
+export default function Perfil({ route, navigation }: NavigationProps) {
   const { dataUsuarioLogin } = useContext(UsuarioContext);
 
   const dadosIniciais: ClienteTypes = {
@@ -22,25 +24,25 @@ export default function Perfil({ navigation }: NavigationProps) {
   };
 
   const [data, setData] = useState<ClienteTypes>(dadosIniciais);
+    const id = route.params?.id;
 
   useEffect(() => {
-    let resultado_busca = login_data[0];
-    setData(resultado_busca);
+    let id_usuario = (id) ? id : "";
+    // let id = dataUsuarioLogin.id;
+    console.log(id_usuario);
 
-    // let resultado_busca = login_data.find((item) =>  item.id === String(dataUsuarioLogin.id));
-    // let resultado_validado = (resultado_busca) ? resultado_busca : dadosIniciais;
-    // setData(resultado_validado);
+    // let resultado_busca = login_data[0];
+    // setData(resultado_busca);
 
-    // console.log(resultado_busca.cep.substring(0, 5));
-    // console.log(resultado_busca.cep.substring(5, resultado_busca.cep.length));
-    // console.log(resultado_busca.cep.substring(0, resultado_busca.cep.length-3));
-    // console.log(resultado_busca.cep.substring(resultado_busca.cep.length-3, resultado_busca.cep.length));
+    let resultado_busca = login_data.find((item) => item.id === String(id_usuario));
+    let resultado_validado = (resultado_busca) ? resultado_busca : /* dadosIniciais */ login_data[0];
+    setData(resultado_validado);
   }, []);
 
   const { nome, email, senha, rua, numero, complemento, bairro, cidade, estado, cep, telefone, data_cadastro, data_modificacao_cadastro } = data;
 
   return (
-    <VStack height="full" paddingX={5} paddingY={3} space={1} width="full">
+    <VStack height="full" paddingX={5} paddingY={10} space="4" width="full">
       <ItemPerfil titulo="Nome:" valor={nome || "[nome]"} />
       <ItemPerfil titulo="E-mail:" valor={email || "[email]"} />
       <ItemPerfil titulo="Senha:" valor={Formatador.FormataExibicaoSenha(senha) || "[senha]"} />
@@ -54,6 +56,16 @@ export default function Perfil({ navigation }: NavigationProps) {
       <ItemPerfil titulo="Telefone:" valor={Formatador.FormataTelefone(telefone) || "[telefone]"} />
       <ItemPerfil titulo="Cadastro:" valor={data_cadastro} />
       <ItemPerfil titulo="Modificação: " valor={data_modificacao_cadastro} />
+      <Button
+        width="full"
+        variant="solid"
+        colorScheme="emerald"
+        size="lg"
+        marginTop="5"
+        onPress={() => navigation.navigate("PerfilEdicao", { id: String((id) ? id : "") })}
+      >
+        <Text fontSize="2xl" color="white">Alterar</Text>
+      </Button>
     </VStack>
   );
 }
@@ -73,7 +85,6 @@ function ItemPerfil(props: ItemPerfilProps) {
       borderBottomColor="gray.300"
       paddingBottom="2"
       paddingX="2"
-      marginBottom="2"
     >
       <Text fontSize="xl" bold>{titulo}</Text>
       <Text fontSize="2xl" marginLeft={5} textAlign="justify">{valor}</Text>

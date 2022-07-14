@@ -37,7 +37,7 @@ export function AppBar(props: AppBarProps) {
             onPress={() => navigation.replace("HomePage")}
             padding="5"
             justifyContent="center"
-            alignItems="centers"
+            alignItems="center"
           >
             <Icon size="lg" as={MaterialIcons} name="arrow-back" color="white" />
           </Pressable>
@@ -55,11 +55,11 @@ export function AppBar(props: AppBarProps) {
         >{titulo}</Text>
       </HStack>
       <HStack>
-        <IconButton
+        {/* <IconButton
           icon={<Icon as={MaterialIcons} name="shopping-cart" size="lg" color="white" />}
           padding="5"
-          onPress={() => navigation.replace('Carrinho')}
-        />
+          onPress={() => navigation.replace('Carrinho', { id: String(dataUsuario.id) })}
+        /> */}
         <IconButton
           icon={<Icon as={MaterialIcons} name="search" size="lg" color="white" />}
           padding="5"
@@ -78,13 +78,16 @@ export function AppBar(props: AppBarProps) {
           );
         }}>
           <Menu.Item
-            onPress={() => navigation.replace('Perfil', { id: dataUsuario.id /* id: String(0) */ /* id: String(id) */ })}
+            onPress={() => navigation.replace('Carrinho', { id: String(dataUsuario.id) })}
+          >Carrinho</Menu.Item>
+          <Menu.Item
+            onPress={() => navigation.replace('Perfil', { id: String(dataUsuario.id) })}
           >Perfil</Menu.Item>
           <Menu.Item
-            onPress={() => navigation.replace('Favoritos')}
+            onPress={() => navigation.replace('Favoritos', { id: String(dataUsuario.id) })}
           >Favoritos</Menu.Item>
           <Menu.Item
-            onPress={() => navigation.replace('Historico')}
+            onPress={() => navigation.replace('Historico', { id: String(dataUsuario.id) })}
           >Historico</Menu.Item>
           <Menu.Item
             onPress={() => navigation.replace('Login')}

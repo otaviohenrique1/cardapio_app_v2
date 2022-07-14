@@ -9,20 +9,18 @@ import Favoritos from "./Favoritos";
 import Carrinho from "./Carrinho";
 import Historico from "./Historico";
 import Busca from "./Busca";
+import PerfilEdicao from "./PerfilEdicao";
 
 export type RootStackParamList = {
   Login: undefined;
   NovoUsuario: undefined;
   HomePage: undefined;
-  Produto: {
-    id: string,
-  };
-  Perfil: {
-    id: string,
-  };
-  Favoritos: undefined;
-  Historico: undefined;
-  Carrinho: undefined;
+  Produto: {  id: string };
+  Perfil: { id: string };
+  PerfilEdicao: { id: string };
+  Favoritos: { id: string };
+  Historico: { id: string };
+  Carrinho: { id: string };
   Busca: undefined;
 }
 
@@ -31,7 +29,7 @@ export function StackRoutes() {
 
   return (
     // <Stack.Navigator initialRouteName="HomePage">
-    <Stack.Navigator initialRouteName="Perfil">
+    <Stack.Navigator initialRouteName="Busca">
       <Stack.Screen
         name="Login"
         component={Login}
@@ -61,6 +59,13 @@ export function StackRoutes() {
         component={Perfil}
         options={{ header: (props) => (
           <AppBar titulo="Perfil" exibe_voltar navigation={props.navigation} />
+        ) }}
+      />
+      <Stack.Screen
+        name="PerfilEdicao"
+        component={PerfilEdicao}
+        options={{ header: (props) => (
+          <AppBar titulo="PerfilEdicao" exibe_voltar navigation={props.navigation} />
         ) }}
       />
       <Stack.Screen

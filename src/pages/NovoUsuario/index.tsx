@@ -23,7 +23,7 @@ export default function NovoUsuario({ navigation }: NavigationProps) {
   function onSubmit(values: ClienteTypes) {
     // 
   }
-  
+
   const lista_dados_campos: CampoInputProps[] = [
     {
       control: control, name: "nome", menssagem_erro: errors.nome?.message, placeholder: "Nome",
@@ -138,7 +138,7 @@ export default function NovoUsuario({ navigation }: NavigationProps) {
                 <Select.Item label="Estado" value="" />
                 {lista_estados_brasil.map((item, index) => {
                   const { texto, valor } = item;
-                  
+
                   return (
                     <Select.Item key={index} label={texto} value={valor} />
                   );
@@ -201,18 +201,37 @@ const validacaoSchemaCliente = Yup.object({
     .min(valor_minimo_carateres, MINIMO_CARACTERES)
     .max(valor_maximo_carateres, MAXIMO_CARACTERES),
   confirmacao_senha: Yup.string().when("senha", {
-      is: (val: string) => (val && val.length > 0 ? true : false),
-      then: Yup.string().oneOf([Yup.ref("senha")], "As senhas não são iguais!")
-    }
+    is: (val: string) => (val && val.length > 0 ? true : false),
+    then: Yup.string().oneOf([Yup.ref("senha")], "As senhas não são iguais!")
+  }
   ).required(Mensagem.MensagemErro("confirme a senha")),
-  rua: Yup.string().required(Mensagem.MensagemErro("rua")),
-  numero: Yup.string().required(Mensagem.MensagemErro("numero")),
-  bairro: Yup.string().required(Mensagem.MensagemErro("bairro")),
-  cidade: Yup.string().required(Mensagem.MensagemErro("cidade")),
-  estado: Yup.string().required(Mensagem.MensagemErro("estado")),
-  complemento: Yup.string().required(Mensagem.MensagemErro("complemento")),
-  cep: Yup.string().required(Mensagem.MensagemErro("cep")),
-  telefone: Yup.string().required(Mensagem.MensagemErro("telefone")),
+  rua: Yup
+    .string()
+    .required(Mensagem.MensagemErro("rua")),
+  numero: Yup
+    .string()
+    .required(Mensagem.MensagemErro("numero")),
+  bairro: Yup
+    .string()
+    .required(Mensagem.MensagemErro("bairro")),
+  cidade: Yup
+    .string()
+    .required(Mensagem.MensagemErro("cidade")),
+  estado: Yup
+    .string()
+    .required(Mensagem.MensagemErro("estado")),
+  complemento: Yup
+    .string()
+    .required(Mensagem.MensagemErro("complemento")),
+  cep: Yup
+    .string()
+    .required(Mensagem.MensagemErro("cep"))
+    .max(8, "Maximo de 8 numeros"),
+  telefone: Yup
+    .string()
+    .required(Mensagem.MensagemErro("telefone"))
+    .min(10, "Minimo de 10 numeros")
+    .max(11, "Maximo de 11 numeros"),
 });
 
 const valoresIniciaisCliente: ClienteTypes = {

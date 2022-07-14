@@ -19,7 +19,7 @@ export default function HomePage({ navigation }: NavigationProps) {
   }, []);
 
   return (
-    <Box height="full" paddingX={5} paddingY={5}>
+    <Box height="full" /* paddingX={5} */ paddingY={5}>
       <FlatList
         data={data}
         renderItem={(item) => {

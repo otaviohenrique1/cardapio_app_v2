@@ -30,29 +30,30 @@ export default function Login({ navigation }: NavigationProps) {
     const senha = values.senha;
 
     let resultado_busca_email = login_data.find((item) => item.email === email);
-    let resultado_busca_senha = login_data.find((item) => item.senha === senha);
+    // let resultado_busca_senha = login_data.find((item) => item.senha === senha);
 
-    if (resultado_busca_email && resultado_busca_senha) {
-      setDataUsuarioLogin({
-        id: resultado_busca_email.id,
-        nome: resultado_busca_email.nome,
-        email: resultado_busca_email.email,
-      });
-      navigation.navigate("HomePage");
+    if (!resultado_busca_email) {
+      // alert("Dados inválidos");
+      return (
+        <Modal isOpen={showModal} onClose={setShowModal} size="lg">
+          <Modal.Content>
+            <Modal.CloseButton />
+            <Modal.Header>Erro!</Modal.Header>
+            <Modal.Body>Dados inválidos</Modal.Body>
+            <Modal.Footer>
+              <Button onPress={() => { setShowModal(!showModal); }} colorScheme="error">Fechar</Button>
+            </Modal.Footer>
+          </Modal.Content>
+        </Modal>
+      );
     }
-    alert("Dados inválidos");
-    return (
-      <Modal isOpen={showModal} onClose={setShowModal} size="lg">
-        <Modal.Content>
-          <Modal.CloseButton />
-          <Modal.Header>Erro!</Modal.Header>
-          <Modal.Body>Dados inválidos</Modal.Body>
-          <Modal.Footer>
-            <Button onPress={() => { setShowModal(!showModal); }} colorScheme="error">Fechar</Button>
-          </Modal.Footer>
-        </Modal.Content>
-      </Modal>
-    );
+
+    setDataUsuarioLogin({
+      id: resultado_busca_email.id,
+      nome: resultado_busca_email.nome,
+      email: resultado_busca_email.email,
+    });
+    navigation.navigate("HomePage");
   }
 
   const lista_dados_campos: CampoInputProps[] = [

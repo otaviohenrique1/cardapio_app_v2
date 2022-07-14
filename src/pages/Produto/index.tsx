@@ -54,7 +54,7 @@ export default function Produto({ route, navigation }: NavigationProps) {
   const id = route.params?.id;
 
   useEffect(() => {
-    let id_item = (id) ? id : 1;
+    let id_item = (id) ? id : "";
     let resultado_filtro_item = lista_produtos.filter((item) => Number(item.id) === Number(id_item));
     let resultado = (resultado_filtro_item) ? resultado_filtro_item[0] : valores_iniciais;
 

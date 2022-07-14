@@ -5,7 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useForm, Controller } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { CampoInputProps } from '../../components/CampoInput';
+import { CampoInputProps } from '../../components/Campos/CampoInput';
 import { Mensagem } from '../../utils/Mensagem';
 import { EMAIL_INVALIDO, MAXIMO_CARACTERES, MINIMO_CARACTERES, valor_maximo_carateres, valor_minimo_carateres } from '../../utils/constantes';
 import { lista_estados_brasil } from '../../utils/listas/lista_estados';
@@ -84,7 +84,6 @@ export default function NovoUsuario({ navigation }: NavigationProps) {
               isRequired
               isInvalid={isInvalid}
               paddingY={2}
-              paddingX={4}
             >
               <Controller
                 control={control}
@@ -115,7 +114,6 @@ export default function NovoUsuario({ navigation }: NavigationProps) {
           isRequired
           isInvalid={'estado' in errors}
           paddingY={2}
-          paddingX={4}
         >
           <Controller
             control={control}
@@ -126,6 +124,9 @@ export default function NovoUsuario({ navigation }: NavigationProps) {
                 onValueChange={(itemValue: string) => { onChange(itemValue); }}
                 variant="underlined"
                 size="2xl"
+                fontSize="xl"
+                color={"gray.400"}
+                paddingLeft="0"
                 borderTopWidth={0}
                 borderLeftWidth={0}
                 borderRightWidth={0}
@@ -135,12 +136,19 @@ export default function NovoUsuario({ navigation }: NavigationProps) {
                   endIcon: <CheckIcon size={4} />
                 }}
               >
-                <Select.Item label="Estado" value="" />
+                <Select.Item
+                  label="Estado"
+                  value=""
+                />
                 {lista_estados_brasil.map((item, index) => {
                   const { texto, valor } = item;
 
                   return (
-                    <Select.Item key={index} label={texto} value={valor} />
+                    <Select.Item
+                      key={index}
+                      label={texto}
+                      value={valor}
+                    />
                   );
                 })}
               </Select>
@@ -153,35 +161,33 @@ export default function NovoUsuario({ navigation }: NavigationProps) {
             <Text fontSize="xl" color="red">{errors.estado?.message}</Text>
           </FormControl.ErrorMessage>
         </FormControl>
-      </VStack>
-      <VStack space={1} marginTop={10} alignItems="center" width="full">
-        <Button
+        <Button.Group
+          isAttached
           width="full"
-          variant="solid"
-          colorScheme="primary"
-          size="lg"
-          onPress={handleSubmit((onSubmit))}
+          marginTop="5"
         >
-          <Text fontSize="xl" color="white">Cadastrar</Text>
-        </Button>
-        <Button
-          width="full"
-          variant="solid"
-          colorScheme="danger"
-          size="lg"
-          onPress={() => reset()}
-        >
-          <Text fontSize="xl" color="white">Limpar</Text>
-        </Button>
-        <Button
-          width="full"
-          variant="solid"
-          colorScheme="emerald"
-          size="lg"
-          onPress={() => navigation.navigate("Login")}
-        >
-          <Text fontSize="xl" color="white">Voltar</Text>
-        </Button>
+          <Button
+            width="1/3"
+            variant="solid"
+            colorScheme="primary"
+            size="lg"
+            onPress={handleSubmit((onSubmit))}
+          >Cadastrar</Button>
+          <Button
+            width="1/3"
+            variant="solid"
+            colorScheme="danger"
+            size="lg"
+            onPress={() => reset()}
+          >Limpar</Button>
+          <Button
+            width="1/3"
+            variant="solid"
+            colorScheme="emerald"
+            size="lg"
+            onPress={() => navigation.navigate("Login")}
+          >Voltar</Button>
+        </Button.Group>
       </VStack>
     </Center>
   );

@@ -15,7 +15,7 @@ export type RootStackParamList = {
   Login: undefined;
   NovoUsuario: undefined;
   HomePage: undefined;
-  Produto: {  id: string };
+  Produto: { id: string };
   Perfil: { id: string };
   PerfilEdicao: { id: string };
   Favoritos: { id: string };
@@ -29,7 +29,7 @@ export function StackRoutes() {
 
   return (
     // <Stack.Navigator initialRouteName="HomePage">
-    <Stack.Navigator initialRouteName="Busca">
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Login"
         component={Login}
@@ -43,58 +43,74 @@ export function StackRoutes() {
       <Stack.Screen
         name="HomePage"
         component={HomePage}
-        options={{ header: (props) => (
-          <AppBar titulo="Cardapio" exibe_voltar={false} navigation={props.navigation} />
-        ) }}
+        options={{
+          header: (props) => (
+            <AppBar titulo="Cardapio" exibe_voltar={false} navigation={props.navigation} />
+          )
+        }}
       />
       <Stack.Screen
         name="Produto"
         component={Produto}
-        options={{ header: (props) => (
-          <AppBar titulo="Produto" exibe_voltar navigation={props.navigation} />
-        ) }}
+        options={{
+          header: (props) => (
+            <AppBar titulo="Produto" exibe_voltar navigation={props.navigation} />
+          )
+        }}
       />
       <Stack.Screen
         name="Perfil"
         component={Perfil}
-        options={{ header: (props) => (
-          <AppBar titulo="Perfil" exibe_voltar navigation={props.navigation} />
-        ) }}
+        options={{
+          header: (props) => (
+            <AppBar titulo="Perfil" exibe_voltar navigation={props.navigation} />
+          )
+        }}
       />
       <Stack.Screen
         name="PerfilEdicao"
         component={PerfilEdicao}
-        options={{ header: (props) => (
-          <AppBar titulo="PerfilEdicao" exibe_voltar navigation={props.navigation} />
-        ) }}
+        options={{
+          header: (props) => (
+            <AppBar titulo="PerfilEdicao" exibe_voltar navigation={props.navigation} />
+          )
+        }}
       />
       <Stack.Screen
         name="Favoritos"
         component={Favoritos}
-        options={{ header: (props) => (
-          <AppBar titulo="Favoritos" exibe_voltar navigation={props.navigation} />
-        ) }}
+        options={{
+          header: (props) => (
+            <AppBar titulo="Favoritos" exibe_voltar navigation={props.navigation} />
+          )
+        }}
       />
       <Stack.Screen
         name="Historico"
         component={Historico}
-        options={{ header: (props) => (
-          <AppBar titulo="Historico" exibe_voltar navigation={props.navigation} />
-        ) }}
+        options={{
+          header: (props) => (
+            <AppBar titulo="Historico" exibe_voltar navigation={props.navigation} />
+          )
+        }}
       />
       <Stack.Screen
         name="Carrinho"
         component={Carrinho}
-        options={{ header: (props) => (
-          <AppBar titulo="Carrinho" exibe_voltar navigation={props.navigation} />
-        ) }}
+        options={{
+          header: (props) => (
+            <AppBar titulo="Carrinho" exibe_voltar navigation={props.navigation} />
+          )
+        }}
       />
       <Stack.Screen
         name="Busca"
         component={Busca}
-        options={{ header: (props) => (
-          <AppBar titulo="Busca" exibe_voltar navigation={props.navigation} />
-        ) }}
+        options={{
+          header: (props) => (
+            <AppBar titulo="Busca" exibe_voltar navigation={props.navigation} />
+          )
+        }}
       />
     </Stack.Navigator>
   );

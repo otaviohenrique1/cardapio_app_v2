@@ -1,15 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { Center, Text, Button, VStack, Input, FormControl, Modal } from "native-base";
+import { Center, Text, Button, VStack, Input, FormControl, Modal, Icon } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useForm, Controller } from 'react-hook-form';
-import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import CampoInput, { CampoInputProps } from '../../components/CampoInput';
+import CampoInput, { CampoInputProps } from '../../components/Campos/CampoInput';
 import { valoresIniciaisLogin } from '../../utils/constantes';
 import { schemaValidacaoFormularioLogin } from '../../utils/ValidacaoSchemas';
 import { login_data } from './login_data';
 import { UsuarioContext } from '../../context/usuario';
+import { FontAwesome } from '@expo/vector-icons';
 
 type NavigationProps = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
@@ -80,7 +80,6 @@ export default function Login({ navigation }: NavigationProps) {
               isRequired
               isInvalid={isInvalid}
               paddingY={2}
-              paddingX={4}
             >
               <Controller
                 control={control}
@@ -92,6 +91,7 @@ export default function Login({ navigation }: NavigationProps) {
                     value={value}
                     variant="underlined"
                     size="2xl"
+                    width="full"
                     secureTextEntry={secureTextEntry}
                     editable={editable}
                     keyboardType={keyboardType}
@@ -107,35 +107,70 @@ export default function Login({ navigation }: NavigationProps) {
             </FormControl>
           );
         })}
-      </VStack>
-      <VStack space={1} alignItems="center" width="full" marginTop={10}>
         <Button
           width="full"
           variant="solid"
           colorScheme="primary"
           size="lg"
           onPress={handleSubmit((onSubmit))}
+          marginTop={2}
         >
-          <Text fontSize="xl" color="white">Entrar</Text>
+          Entrar
         </Button>
-        <Button
-          width="full"
-          variant="solid"
-          colorScheme="danger"
-          size="lg"
-          onPress={() => reset()}
-        >
-          <Text fontSize="xl" color="white">Limpar</Text>
-        </Button>
-        <Button
-          width="full"
-          variant="solid"
-          colorScheme="emerald"
-          size="lg"
-          onPress={() => navigation.navigate("NovoUsuario")}
-        >
-          <Text fontSize="xl" color="white">Novo Cadastro</Text>
-        </Button>
+        <Button.Group isAttached width="full">
+          <Button
+            width="1/2"
+            variant="solid"
+            colorScheme="emerald"
+            size="lg"
+            onPress={() => navigation.navigate("NovoUsuario")}
+          >Novo Cadastro</Button>
+          <Button
+            width="1/2"
+            variant="solid"
+            colorScheme="indigo"
+            size="lg"
+            onPress={() => alert("Recuperar senha")}
+          >Recuperar senha</Button>
+        </Button.Group>
+        <Button.Group isAttached width="full">
+          <Button
+            width="1/3"
+            variant="solid"
+            colorScheme="red"
+            size="lg"
+            onPress={() => alert("Google")}
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
+            <Icon as={FontAwesome} name="google" size="2xl" color="white" />
+          </Button>
+          <Button
+            width="1/3"
+            variant="solid"
+            colorScheme="coolGray"
+            size="lg"
+            onPress={() => alert("Apple")}
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
+            <Icon as={FontAwesome} name="apple" size="2xl" color="white" />
+          </Button>
+          <Button
+            width="1/3"
+            variant="solid"
+            colorScheme="lightBlue"
+            size="lg"
+            onPress={() => alert("Facebook")}
+            alignItems="center"
+            justifyContent="center"
+            flexDirection="column"
+          >
+            <Icon as={FontAwesome} name="facebook" size="2xl" color="white" />
+          </Button>
+        </Button.Group>
       </VStack>
     </Center>
   );

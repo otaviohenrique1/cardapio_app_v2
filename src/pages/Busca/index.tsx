@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
-import { Center, Text, Button, VStack, FormControl, Input } from "native-base";
+import { Center, Text, Button, VStack, FormControl, Input, HStack, IconButton, Icon, FlatList, Pressable, Box, Avatar, Spacer } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as Yup from "yup";
 import { Mensagem } from '../../utils/Mensagem';
+import { MaterialIcons } from "@expo/vector-icons";
+import { lista_produtos } from '../HomePage/lista_produtos';
+import { Formatador } from '../../utils/Formatador';
+import ItemListaVazia from '../../components/Listas/ItemListaVazia';
+import ListaProdutos from '../../components/Listas/ListaProdutos';
 
 type NavigationProps = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
@@ -28,13 +33,17 @@ const schemaValidacaoBusca = Yup
   });
 
 export default function Busca({ navigation }: NavigationProps) {
+  const [data, setData] = useState<ProdutoCardapioBaseType[]>([]);
+
   const { control, handleSubmit, formState: { errors }, reset } = useForm<BuscaTypes>({
     defaultValues: valoresIniciasBusca,
     resolver: yupResolver(schemaValidacaoBusca)
   });
 
   function onSubmit(values: BuscaTypes) {
-    alert(values.busca);
+    let termo_busca =  values.busca;
+    let resultado_busca = lista_produtos.filter((item) => item.nome === termo_busca);
+    setData(resultado_busca);
   }
 
   return (
@@ -42,40 +51,54 @@ export default function Busca({ navigation }: NavigationProps) {
       <FormControl
         isRequired
         isInvalid={"busca" in errors}
-        paddingY={2}
-        paddingX={4}
+        width="full"
+        paddingX={5}
+        marginBottom="10"
       >
         <Controller
           control={control}
           render={({ field: { onChange, onBlur, value } }) => (
-            <Input
-              onBlur={onBlur}
-              placeholder="Busca"
-              onChangeText={(val) => onChange(val)}
-              value={value}
-              variant="underlined"
-              size="2xl"
-              secureTextEntry={false}
-              editable={true}
-              keyboardType="default"
-            />
+            <HStack width="full">
+              <Input
+                onBlur={onBlur}
+                placeholder="Busca"
+                onChangeText={(val) => onChange(val)}
+                value={value}
+                variant="underlined"
+                size="2xl"
+                secureTextEntry={false}
+                editable={true}
+                keyboardType="default"
+                width="85%"
+              />
+              <IconButton
+                icon={<Icon as={MaterialIcons} name="search" size="3xl" color="white" />}
+                colorScheme="violet"
+                variant="solid"
+                onPress={handleSubmit((onSubmit))}
+              />
+            </HStack>
           )}
           name="busca"
           rules={{ required: 'Campo vazio' }}
           defaultValue=""
         />
-        <FormControl.ErrorMessage>
-          <Text fontSize="xl" color="red">{errors.busca?.message}</Text>
+        <FormControl.ErrorMessage justifyContent="center">
+          <Text
+            fontSize="xl"
+            color="red"
+            textAlign="center"
+          >{errors.busca?.message}</Text>
         </FormControl.ErrorMessage>
       </FormControl>
-      <Button
-        variant="solid"
-        colorScheme="primary"
-        size="lg"
-        onPress={handleSubmit((onSubmit))}
-      >
-        <Text fontSize="xl" color="white">Entrar</Text>
-      </Button>
+      {(data.length !== 0) ? (
+        <ListaProdutos
+          data={data}
+          navigation={navigation}
+        />
+      ) : (
+        <ItemListaVazia />
+      )}
     </VStack>
   );
 }

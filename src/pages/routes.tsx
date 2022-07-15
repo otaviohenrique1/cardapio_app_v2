@@ -29,7 +29,7 @@ export function StackRoutes() {
 
   return (
     // <Stack.Navigator initialRouteName="HomePage">
-    <Stack.Navigator initialRouteName="Carrinho">
+    <Stack.Navigator initialRouteName="Login">
       <Stack.Screen
         name="Login"
         component={Login}

@@ -1,8 +1,8 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import { UsuarioContext, UsuarioLogin, dados_iniciais_usuario } from "../../context/usuario";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ParamListBase } from "@react-navigation/native";
-import { Box, HStack, Icon, IconButton, StatusBar, Text, Menu, Pressable } from "native-base";
+import { Box, HStack, Icon, IconButton, StatusBar, Text, Menu, Pressable, AlertDialog, Button } from "native-base";
 import { MaterialIcons } from "@expo/vector-icons";
 interface AppBarProps {
   titulo: string;
@@ -14,6 +14,10 @@ export function AppBar(props: AppBarProps) {
   const { titulo, navigation, exibe_voltar } = props;
   const { dataUsuarioLogin } = useContext(UsuarioContext);
   const [dataUsuario, setDataUsuario] = useState<UsuarioLogin>(dados_iniciais_usuario);
+  const [isOpenAlertDialog, setIsOpenAlertDialog] = useState(false);
+
+  const onClose = () => setIsOpenAlertDialog(false);
+  const cancelRef = useRef(null);
 
   useEffect(() => {
     let id = (dataUsuarioLogin) ? dataUsuarioLogin.id : "0";
@@ -95,7 +99,7 @@ export function AppBar(props: AppBarProps) {
               <Text>Historico</Text>
             </HStack>
           </Menu.Item>
-          <Menu.Item onPress={() => navigation.replace('Login')}>
+          <Menu.Item onPress={() => setIsOpenAlertDialog(!isOpenAlertDialog)}>
             <HStack space="2">
               <Icon as={MaterialIcons} name="logout" size="lg" color="coolGray.600" />
               <Text>Sair</Text>
@@ -104,5 +108,23 @@ export function AppBar(props: AppBarProps) {
         </Menu>
       </HStack>
     </HStack>
+    <AlertDialog leastDestructiveRef={cancelRef} isOpen={isOpenAlertDialog} onClose={onClose}>
+      <AlertDialog.Content>
+        <AlertDialog.CloseButton />
+        <AlertDialog.Header>Aviso</AlertDialog.Header>
+        <AlertDialog.Body>
+          Você quer deslogar do app?
+        </AlertDialog.Body>
+        <AlertDialog.Footer>
+          <Button.Group space={2}>
+            <Button variant="solid" colorScheme="danger" onPress={() => {
+              setIsOpenAlertDialog(false);
+              navigation.replace('Login');
+            }}>Sim</Button>
+            <Button variant="solid" colorScheme="coolGray" onPress={onClose} ref={cancelRef}>Não</Button>
+          </Button.Group>
+        </AlertDialog.Footer>
+      </AlertDialog.Content>
+    </AlertDialog>
   </>;
 }

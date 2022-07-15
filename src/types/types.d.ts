@@ -80,6 +80,7 @@ interface ProdutoCardapioBaseType {
   tipo: string;
   preco: number | string;
   ativo: boolean;
+  favorito: boolean;
 }
 
 interface ProdutoCardapioType extends ProdutoCardapioBaseType {

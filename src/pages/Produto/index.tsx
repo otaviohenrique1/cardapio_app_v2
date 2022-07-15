@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Center, Text, Button, VStack, Avatar, FlatList, HStack, Spacer, Box, Image, Pressable, Checkbox } from "native-base";
+import { Center, Text, Button, VStack, Avatar, FlatList, HStack, Spacer, Box, Image, Pressable, Checkbox, IconButton, Icon } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RouteProp } from '@react-navigation/native';
 import { lista_produtos } from '../HomePage/lista_produtos';
 import { Formatador } from '../../utils/Formatador';
 import { Control, Controller } from 'react-hook-form';
+import { AntDesign } from '@expo/vector-icons';
 
 type NavigationProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, "Produto">;
@@ -23,40 +24,26 @@ interface ingredientesRemoviveisOpcionaisTypes extends IngredientesListaTypes {
 }
 
 export default function Produto({ route, navigation }: NavigationProps) {
-  const valores_iniciais: ProdutoCardapioType = {
-    id: "",
-    foto_miniatura: {
-      id: "",
-      nome: "",
-      url: "",
-    },
-    nome: "",
-    tipo: "",
-    preco: 0,
-    ativo: false,
-    fotos_galeria: [],
-    codigo: "",
-    descricao: "",
-    quantidade: 0,
-    unidade_quantidade: "",
-    ingredientes: [],
-    ingredientes_removiveis: [],
-    ingredientes_opcionais: [],
-    data_cadastro: new Date(),
-    data_modificacao_cadastro: new Date(),
-    empresaId: "",
+  const valoresIniciaisProdutoCardapio: ProdutoCardapioType = {
+    id: "", foto_miniatura: { id: "", nome: "", url: "", },
+    nome: "", tipo: "", preco: 0, ativo: false, fotos_galeria: [],
+    codigo: "", descricao: "", quantidade: 0, unidade_quantidade: "",
+    favorito: false ,ingredientes: [],  ingredientes_removiveis: [],
+    ingredientes_opcionais: [], data_cadastro: new Date(),
+    data_modificacao_cadastro: new Date(), empresaId: "",
   };
 
-  const [data, setData] = useState<ProdutoCardapioType>(valores_iniciais);
-  const [ingredientesListaData, setIngredientesListaData] = useState<IngredientesListaTypes[]>([]);
-  const [ingredientesRemoviveisData, setIngredientesRemoviveisData] = useState<ingredientesRemoviveisOpcionaisTypes[]>([]);
-  const [ingredientesOpcionaisData, setIngredientesOpcionaisData] = useState<ingredientesRemoviveisOpcionaisTypes[]>([]);
+  const [data, setData] = useState<ProdutoCardapioType>(valoresIniciaisProdutoCardapio);
+  const [ingredientesLista, setIngredientesLista] = useState<IngredientesListaTypes[]>([]);
+  const [ingredientesRemoviveis, setIngredientesRemoviveis] = useState<ingredientesRemoviveisOpcionaisTypes[]>([]);
+  const [ingredientesOpcionais, setIngredientesOpcionais] = useState<ingredientesRemoviveisOpcionaisTypes[]>([]);
+  const [favorito, setFavorito] = useState<boolean>(false);
   const id = route.params?.id;
 
   useEffect(() => {
     let id_item = (id) ? id : "";
     let resultado_filtro_item = lista_produtos.filter((item) => Number(item.id) === Number(id_item));
-    let resultado = (resultado_filtro_item) ? resultado_filtro_item[0] : valores_iniciais;
+    let resultado = (resultado_filtro_item) ? resultado_filtro_item[0] : valoresIniciaisProdutoCardapio;
 
     let produto1 = lista_produtos[0];
 
@@ -85,23 +72,16 @@ export default function Produto({ route, navigation }: NavigationProps) {
       });
 
     setData(produto1);
-    setIngredientesListaData(ingredientesLista);
-    setIngredientesRemoviveisData(ingredientesRemoviveisLista);
-    setIngredientesOpcionaisData(ingredientesOpcionaisLista);
+    setIngredientesLista(ingredientesLista);
+    setIngredientesRemoviveis(ingredientesRemoviveisLista);
+    setIngredientesOpcionais(ingredientesOpcionaisLista);
   }, [])
 
   const { foto_miniatura, nome, tipo, preco, fotos_galeria, descricao, ingredientes, ingredientes_removiveis, ingredientes_opcionais, empresaId } = data;
   const { url: url_avatar } = foto_miniatura;
 
   return (
-    <VStack
-      space={1}
-      alignItems="center"
-      width="full"
-      height="full"
-      paddingX={5}
-      paddingY={8}
-    >
+    <VStack space={1} alignItems="center" width="full" height="full" paddingX={5} paddingY={8}>
       <VStack
         borderBottomWidth="1"
         _dark={{ borderColor: "gray.600" }}
@@ -114,6 +94,26 @@ export default function Produto({ route, navigation }: NavigationProps) {
       >
         <Text fontSize="4xl">{nome}</Text>
         <Avatar size="48px" source={{ uri: url_avatar }} />
+      </VStack>
+      <VStack
+        borderBottomWidth="1"
+        _dark={{ borderColor: "gray.600" }}
+        borderColor="coolGray.200"
+        width="full"
+        justifyContent="start"
+        alignItems="center"
+        flexDirection="row"
+        space={2}
+      >
+        <IconButton
+          icon={(favorito) ? (
+            <Icon as={AntDesign} name="heart" size="lg" color="indigo.600" />
+          ) : (
+            <Icon as={AntDesign} name="hearto" size="lg" color="indigo.600" />
+          )}
+          padding="5"
+          onPress={() => setFavorito(!favorito)}
+        />
       </VStack>
       <Box
         borderBottomWidth="1"
@@ -157,7 +157,7 @@ export default function Produto({ route, navigation }: NavigationProps) {
       </VStack>
       <ListaIngredientes
         titulo="Ingredientes"
-        lista={ingredientesListaData}
+        lista={ingredientesLista}
       />
       <GaleriaFotos
         titulo="Galeria"

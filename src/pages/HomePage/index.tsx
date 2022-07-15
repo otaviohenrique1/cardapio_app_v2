@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { VStack } from "native-base";
+import { FlatList, VStack } from "native-base";
 import { RootStackParamList } from '../routes';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { lista_produtos } from './lista_produtos';
-import ListaProdutos from '../../components/Listas/ListaProdutos';
 import ItemListaVazia from '../../components/Listas/ItemListaVazia';
+import ItemListaProdutos from '../../components/Listas/ItemListaProdutos';
 
 type NavigationProps = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
@@ -20,9 +20,15 @@ export default function HomePage({ navigation }: NavigationProps) {
   return (
     <VStack height="full" paddingY={5}>
       {(data.length !== 0) ? (
-        <ListaProdutos
+        <FlatList
           data={data}
-          navigation={navigation}
+          renderItem={(item) => (
+            <ItemListaProdutos
+              data={item.item}
+              navigation={navigation}
+            />
+          )}
+          keyExtractor={(item, index) => `${index}-${item.id}`}
         />
       ) : (
         <ItemListaVazia />

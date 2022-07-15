@@ -11,6 +11,7 @@ import { lista_produtos } from '../HomePage/lista_produtos';
 import { Formatador } from '../../utils/Formatador';
 import ItemListaVazia from '../../components/Listas/ItemListaVazia';
 import ListaProdutos from '../../components/Listas/ListaProdutos';
+import ItemListaProdutos from '../../components/Listas/ItemListaProdutos';
 
 type NavigationProps = {
   navigation: NativeStackNavigationProp<RootStackParamList>;
@@ -41,7 +42,7 @@ export default function Busca({ navigation }: NavigationProps) {
   });
 
   function onSubmit(values: BuscaTypes) {
-    let termo_busca =  values.busca;
+    let termo_busca = values.busca;
     let resultado_busca = lista_produtos.filter((item) => item.nome === termo_busca);
     setData(resultado_busca);
   }
@@ -92,9 +93,15 @@ export default function Busca({ navigation }: NavigationProps) {
         </FormControl.ErrorMessage>
       </FormControl>
       {(data.length !== 0) ? (
-        <ListaProdutos
+        <FlatList
           data={data}
-          navigation={navigation}
+          renderItem={(item) => (
+            <ItemListaProdutos
+              data={item.item}
+              navigation={navigation}
+            />
+          )}
+          keyExtractor={(item, index) => `${index}-${item.id}`}
         />
       ) : (
         <ItemListaVazia />

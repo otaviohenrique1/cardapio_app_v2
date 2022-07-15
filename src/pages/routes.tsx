@@ -29,7 +29,7 @@ export function StackRoutes() {
 
   return (
     // <Stack.Navigator initialRouteName="HomePage">
-    <Stack.Navigator initialRouteName="Login">
+    <Stack.Navigator initialRouteName="Carrinho">
       <Stack.Screen
         name="Login"
         component={Login}
@@ -50,20 +50,20 @@ export function StackRoutes() {
         }}
       />
       <Stack.Screen
-        name="Produto"
-        component={Produto}
-        options={{
-          header: (props) => (
-            <AppBar titulo="Produto" exibe_voltar navigation={props.navigation} />
-          )
-        }}
-      />
-      <Stack.Screen
         name="Perfil"
         component={Perfil}
         options={{
           header: (props) => (
             <AppBar titulo="Perfil" exibe_voltar navigation={props.navigation} />
+          )
+        }}
+      />
+      <Stack.Screen
+        name="Produto"
+        component={Produto}
+        options={{
+          header: (props) => (
+            <AppBar titulo="Produto" exibe_voltar navigation={props.navigation} />
           )
         }}
       />

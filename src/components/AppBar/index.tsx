@@ -46,9 +46,9 @@ export function AppBar(props: AppBarProps) {
       </HStack>
       <HStack>
         <IconButton
-          icon={<Icon as={MaterialIcons} name="search" size="lg" color="white" />}
+          icon={<Icon as={MaterialIcons} name="home" size="lg" color="white" />}
           padding="5"
-          onPress={() => navigation.replace('Busca')}
+          onPress={() => navigation.replace("HomePage")}
         />
         <Menu
           width="48"
@@ -65,41 +65,37 @@ export function AppBar(props: AppBarProps) {
               </Pressable>
             );
           }}>
-          <Menu.Item
-            onPress={() => navigation.replace('Carrinho', { id: String(dataUsuario.id) })}
-          >
+          <Menu.Item onPress={() => navigation.replace('Busca', { id: String(dataUsuario.id) })}>
+            <HStack space="2">
+              <Icon as={MaterialIcons} name="search" size="lg" color="coolGray.600" />
+              <Text>Busca</Text>
+            </HStack>
+          </Menu.Item>
+          <Menu.Item onPress={() => navigation.replace('Carrinho', { id: String(dataUsuario.id) })}>
             <HStack space="2">
               <Icon as={MaterialIcons} name="shopping-cart" size="lg" color="coolGray.600" />
               <Text>Carrinho</Text>
             </HStack>
           </Menu.Item>
-          <Menu.Item
-            onPress={() => navigation.replace('Perfil', { id: String(dataUsuario.id) })}
-          >
+          <Menu.Item onPress={() => navigation.replace('Perfil', { id: String(dataUsuario.id) })}>
             <HStack space="2">
               <Icon as={MaterialIcons} name="person" size="lg" color="coolGray.600" />
               <Text>Perfil</Text>
             </HStack>
           </Menu.Item>
-          <Menu.Item
-            onPress={() => navigation.replace('Favoritos', { id: String(dataUsuario.id) })}
-          >
+          <Menu.Item onPress={() => navigation.replace('Favoritos', { id: String(dataUsuario.id) })}>
             <HStack space="2">
               <Icon as={MaterialIcons} name="favorite" size="lg" color="coolGray.600" />
               <Text>Favoritos</Text>
             </HStack>
           </Menu.Item>
-          <Menu.Item
-            onPress={() => navigation.replace('Historico', { id: String(dataUsuario.id) })}
-          >
+          <Menu.Item onPress={() => navigation.replace('Historico', { id: String(dataUsuario.id) })}>
             <HStack space="2">
               <Icon as={MaterialIcons} name="format-list-bulleted" size="lg" color="coolGray.600" />
               <Text>Historico</Text>
             </HStack>
           </Menu.Item>
-          <Menu.Item
-            onPress={() => navigation.replace('Login')}
-          >
+          <Menu.Item onPress={() => navigation.replace('Login')}>
             <HStack space="2">
               <Icon as={MaterialIcons} name="logout" size="lg" color="coolGray.600" />
               <Text>Sair</Text>
